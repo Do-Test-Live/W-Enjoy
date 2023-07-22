@@ -1955,7 +1955,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 .fullpage-loader span {
     width: 6vmin;
     height: 6vmin;
-    background-color: var(--theme-color);
+    background-color: #e0227c;
     border-radius: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
