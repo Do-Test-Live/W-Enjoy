@@ -5200,7 +5200,7 @@ span {
 }
 
 .theme-bg-color {
-    background: var(--theme-color) !important
+    background: #e0227c; !important
 }
 
 .banner-contain {
@@ -8151,7 +8151,7 @@ header .header-top .about-list li .theme-form-select .dropdown-toggle:focus {
     box-shadow: none
 }
 
-header .header-top .about-list li .theme-form-select .dropdown-toggle::before {
+/*header .header-top .about-list li .theme-form-select .dropdown-toggle::before {
     content: "";
     position: absolute;
     font-family: "Font Awesome 6 Free";
@@ -8160,7 +8160,7 @@ header .header-top .about-list li .theme-form-select .dropdown-toggle::before {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     right: 0;
-    color: #fff
+    color: #fff*/
 }
 
 header .header-top .about-list li .theme-form-select .dropdown-menu.sm-dropdown-menu {
@@ -8222,7 +8222,7 @@ header .top-nav {
 
 @media (max-width: 767px) {
     header .top-nav {
-        padding: 24px 0 0
+        padding: 12px 0 12px
     }
 }
 
@@ -14646,13 +14646,13 @@ header .navbar.navbar-expand-xl .navbar-nav .nav-link .label-menu::before {
     right: 10px
 }
 
-header .navbar.navbar-expand-xl .navbar-nav .nav-link::before {
+/*header .navbar.navbar-expand-xl .navbar-nav .nav-link::before {
     content: "";
     position: absolute;
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     right: -12px
-}
+}*/
 
 [dir="rtl"] header .navbar.navbar-expand-xl .navbar-nav .nav-link::before {
     right: unset;
