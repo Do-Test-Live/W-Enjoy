@@ -3393,7 +3393,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 .product-wrapper .slick-dots li.slick-active button {
     margin: 0;
     width: calc(30px + (40 - 30) * ((100vw - 320px) / (1920 - 320)));
-    background-color: var(--theme-color);
+    background-color: #e0227c;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease
 }
@@ -5196,7 +5196,7 @@ span {
 }
 
 .theme-color {
-    color: var(--theme-color) !important
+    color: #e0227c !important;
 }
 
 .theme-bg-color {
@@ -16457,7 +16457,7 @@ header .offcanvas-backdrop {
     height: 2px;
     bottom: -8px;
     left: 0;
-    background-color: var(--theme-color)
+    background-color: #e0227c;
 }
 
 [dir="rtl"] .category-menu h3::before {
@@ -17056,7 +17056,7 @@ header .offcanvas-backdrop {
 }
 
 .product-list li .offer-product:hover .offer-detail a .name {
-    color: var(--theme-color)
+    color: #e0227c;
 }
 
 .product-list li .offer-product .offer-image {
@@ -27271,7 +27271,6 @@ header .offcanvas-backdrop {
 }
 
 .custom-height {
-    max-height: 190px;
     overflow-y: auto;
     height: 100%
 }
