@@ -1,10 +1,12 @@
 <?php
 session_start();
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     $customer_id = $_SESSION['id'];
 }
 include('admin/include/dbController.php');
 $db_handle = new DBController();
+
+include ('cart_backend.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,281 +60,17 @@ $db_handle = new DBController();
 <body>
 
 <!-- Loader Start -->
-<div class="fullpage-loader">
+<!--<div class="fullpage-loader">
     <span></span>
     <span></span>
     <span></span>
     <span></span>
     <span></span>
     <span></span>
-</div>
-<!-- Loader End -->
-<header class="">
-    <div class="header-top">
-        <div class="container-fluid-lg">
-            <div class="row">
-                <div class="col-xxl-3 d-xxl-block d-none">
-                    <div class="top-left-header">
-                        <i class="iconly-Location icli text-white"></i>
-                        <span class="text-white">Hong Kong</span>
-                    </div>
-                </div>
-
-                <div class="col-xxl-6 col-lg-9 d-lg-block d-none">
-                    <div class="header-offer">
-                        <div class="notification-slider">
-                            <div>
-                                <div class="timer-notification">
-                                    <h6><strong class="me-1">Welcome to Enjoy!</strong>Wrap new offers/gift
-                                        every signle day on Weekends.<strong class="ms-1">New Coupon Code: Enjoy24
-                                        </strong>
-
-                                    </h6>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="timer-notification">
-                                    <h6>Something you love is now on sale!
-                                        <a href="#" class="text-white">Buy Now
-                                            !</a>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3">
-                    <ul class="about-list right-nav-about">
-                        <li class="right-nav-list">
-                            <div class="dropdown theme-form-select">
-                                <button class="btn dropdown-toggle" type="button" id="select-language"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="assets/images/country/HK.png"
-                                         class="img-fluid blur-up lazyload" alt="">
-                                    <span>CN</span>
-                                </button>
-                                <!--   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="select-language">
-                                       <li>
-                                           <a class="dropdown-item" href="javascript:void(0)" id="english">
-                                               <img src="assets/images/country/united-kingdom.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                               <span>English</span>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a class="dropdown-item" href="javascript:void(0)" id="france">
-                                               <img src="assets/images/country/germany.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                               <span>Germany</span>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a class="dropdown-item" href="javascript:void(0)" id="chinese">
-                                               <img src="assets/images/country/turkish.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                               <span>Turki</span>
-                                           </a>
-                                       </li>
-                                   </ul>-->
-                            </div>
-                        </li>
-                        <li class="right-nav-list">
-                            <div class="dropdown theme-form-select">
-                                <button class="btn dropdown-toggle" type="button" id="select-dollar"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span>USD</span>
-                                </button>
-                                <!-- <ul class="dropdown-menu dropdown-menu-end sm-dropdown-menu"
-                                     aria-labelledby="select-dollar">
-                                     <li>
-                                         <a class="dropdown-item" id="aud" href="javascript:void(0)">AUD</a>
-                                     </li>
-                                     <li>
-                                         <a class="dropdown-item" id="eur" href="javascript:void(0)">EUR</a>
-                                     </li>
-                                     <li>
-                                         <a class="dropdown-item" id="cny" href="javascript:void(0)">CNY</a>
-                                     </li>
-                                 </ul>-->
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="top-nav top-header sticky-header">
-        <div class="container-fluid-lg">
-            <div class="row">
-                <div class="col-12">
-                    <div class="navbar-top">
-                        <button class="navbar-toggler d-xl-none d-inline navbar-menu-button me-2" type="button"
-                                data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
-                                <span class="navbar-toggler-icon">
-                                    <i class="fa-solid fa-bars"></i>
-                                </span>
-                        </button>
-                        <a href="index.html" class="web-logo nav-logo">
-                            <img src="assets/images/logo/logo-1.png" style="height: 52px;" class="img-fluid blur-up lazyload" alt="">
-                        </a>
-
-                        <div class="header-nav-middle">
-                            <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
-                                <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
-                                    <div class="offcanvas-header navbar-shadow">
-                                        <h5>Menu</h5>
-                                        <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="offcanvas-body">
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link" href="index.html">Home</a>
-                                            </li>
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link" href="#">About</a>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="shop.php">Product</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="rightside-box">
-                            <div class="search-full">
-                                <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i data-feather="search" class="font-light"></i>
-                                        </span>
-                                    <input type="text" class="form-control search-type" placeholder="Search here..">
-                                    <span class="input-group-text close-search">
-                                            <i data-feather="x" class="font-light"></i>
-                                        </span>
-                                </div>
-                            </div>
-                            <ul class="right-side-menu">
-                                <li class="right-side">
-                                    <div class="delivery-login-box">
-                                        <div class="delivery-icon">
-                                            <div class="search-box">
-                                                <i data-feather="search"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!--  <li class="right-side">
-                                      <a href="wishlist.html" class="btn p-0 position-relative header-wishlist">
-                                          <i data-feather="bookmark"></i>
-                                      </a>
-                                  </li>-->
-                                <!--  <li class="right-side">
-                                      <div class="onhover-dropdown header-badge">
-                                          <button type="button" class="btn p-0 position-relative header-wishlist">
-                                              <i data-feather="shopping-cart"></i>
-                                              <span class="position-absolute top-0 start-100 translate-middle badge">2
-                                                      <span class="visually-hidden">unread messages</span>
-                                                  </span>
-                                          </button>
-
-                                          <div class="onhover-div">
-                                              <ul class="cart-list">
-                                                  <li class="product-box-contain">
-                                                      <div class="drop-cart">
-                                                          <a href="product-left-thumbnail.html" class="drop-image">
-                                                              <img src="assets/images/vegetable/product/1.png"
-                                                                   class="blur-up lazyload" alt="">
-                                                          </a>
-
-                                                          <div class="drop-contain">
-                                                              <a href="product-left-thumbnail.html">
-                                                                  <h5>Fantasy Crunchy Choco Chip Cookies</h5>
-                                                              </a>
-                                                              <h6><span>1 x</span> $80.58</h6>
-                                                              <button class="close-button close_button">
-                                                                  <i class="fa-solid fa-xmark"></i>
-                                                              </button>
-                                                          </div>
-                                                      </div>
-                                                  </li>
-
-                                                  <li class="product-box-contain">
-                                                      <div class="drop-cart">
-                                                          <a href="product-left-thumbnail.html" class="drop-image">
-                                                              <img src="assets/images/vegetable/product/2.png"
-                                                                   class="blur-up lazyload" alt="">
-                                                          </a>
-
-                                                          <div class="drop-contain">
-                                                              <a href="product-left-thumbnail.html">
-                                                                  <h5>Peanut Butter Bite Premium Butter Cookies 600 g
-                                                                  </h5>
-                                                              </a>
-                                                              <h6><span>1 x</span> $25.68</h6>
-                                                              <button class="close-button close_button">
-                                                                  <i class="fa-solid fa-xmark"></i>
-                                                              </button>
-                                                          </div>
-                                                      </div>
-                                                  </li>
-                                              </ul>
-
-                                              <div class="price-box">
-                                                  <h5>Total :</h5>
-                                                  <h4 class="theme-color fw-bold">$106.58</h4>
-                                              </div>
-
-                                              <div class="button-group">
-                                                  <a href="cart.html" class="btn btn-sm cart-button">View Cart</a>
-                                                  <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
-                                                      text-white">Checkout</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </li>-->
-                                <li class="right-side onhover-dropdown">
-                                    <div class="delivery-login-box">
-                                        <div class="delivery-icon">
-                                            <i data-feather="user"></i>
-                                        </div>
-                                        <div class="delivery-detail">
-                                            <h6>Hello,</h6>
-                                            <h5>My Account</h5>
-                                        </div>
-                                    </div>
-
-                                    <div class="onhover-div onhover-div-login">
-                                        <ul class="user-box-name">
-                                            <li class="product-box-contain">
-                                                <i></i>
-                                                <a href="#">Log In</a>
-                                            </li>
-
-                                            <li class="product-box-contain">
-                                                <a href="#">Register</a>
-                                            </li>
-
-                                            <li class="product-box-contain">
-                                                <a href="#">Forgot Password</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+</div>-->
 <!-- Header Start -->
+<?php include ('include/header.php');?>
+<!-- Header End -->
 
 
 <!-- Header End -->
@@ -346,9 +84,10 @@ $db_handle = new DBController();
                 <div class="slider-1 slider-animate product-wrapper no-arrow">
                     <div>
                         <div class="banner-contain-2 hover-effect">
-                            <img src="assets/images/grocery/banner/1.jpg" class="bg-img rounded-3 blur-up lazyload" alt="">
+                            <img src="assets/images/grocery/banner/1.jpg" class="bg-img rounded-3 blur-up lazyload"
+                                 alt="">
                             <div style="height:250px">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -379,45 +118,45 @@ $db_handle = new DBController();
                                         <span>Categories</span>
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                     aria-labelledby="headingOne">
-                                    <div class="accordion-body">
+                            </div>
 
-                                        <ul class="category-list custom-padding custom-height">
-
+                            <?php
+                            $fetch_cat = $db_handle->runQuery("select * from category where status = '1'");
+                            $no_fetch_cat = $db_handle->numRows("select * from category where status = '1'");
+                            for ($i = 0; $i < $no_fetch_cat; $i++) {
+                                ?>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading<?php echo $fetch_cat[$i]['id']; ?>">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapse<?php echo $fetch_cat[$i]['id']; ?>"
+                                                aria-expanded="true"
+                                                aria-controls="collapse<?php echo $fetch_cat[$i]['id']; ?>">
+                                            <span><?php echo $fetch_cat[$i]['c_name']; ?></span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse<?php echo $fetch_cat[$i]['id']; ?>"
+                                         class="accordion-collapse collapse show"
+                                         aria-labelledby="heading<?php echo $fetch_cat[$i]['id']; ?>">
+                                        <div class="accordion-body">
                                             <?php
-                                            $fetch_cat = $db_handle->runQuery("SELECT * FROM `category` where status = '1'");
-                                            $row = $db_handle->numRows("SELECT * FROM `category` where status = '1'");
-                                            for ($i = 0; $i < $row; $i++) {
+                                            $cat_id = $fetch_cat[$i]['id'];
+                                            $fetch_sub_cat = $db_handle->runQuery("select * from sub_cat where cat_id = '$cat_id'");
+                                            $no_fetch_sub_cat = $db_handle->numRows("select * from sub_cat where cat_id = '$cat_id'");
+                                            for ($j = 0; $j < $no_fetch_sub_cat; $j++) {
                                                 ?>
-                                                <li>
-                                                    <a href="shop.php?catId=<?php echo $fetch_cat[$i]['id']; ?>">
-                                                        <div class="form-check ps-0 m-0 category-list-box">
-                                                            <label class="form-check-label" for="fruit"
-                                                                   style="cursor: pointer;">
-                                                                <span class="name"><?php echo $fetch_cat[$i]['c_name'];?></span>
-                                                                <?php
-                                                                $product_id = $fetch_cat[$i]['id'];
-                                                                $fetch_number_of_products = $db_handle->runQuery("SELECT COUNT(id) as total_number FROM `product` WHERE category_id = '$product_id';");
-                                                                $row1 = $db_handle->numRows("SELECT COUNT(id) FROM `product` WHERE category_id = '$product_id';");
-                                                                for ($j = 0; $j < $row1; $j++) {
-                                                                    ?>
-                                                                    <span class="number"><?php echo $fetch_number_of_products[$j]['total_number']; ?></span>
-                                                                    <?php
-                                                                }
-                                                                ?>
-                                                            </label>
-                                                        </div>
-
-                                                    </a>
-                                                </li>
+                                                <ul class="category-list custom-padding custom-height">
+                                                    <li><a href="shop.php?subcat=<?php echo $fetch_sub_cat[$j]['id'];?>"><?php echo $fetch_sub_cat[$j]['sub_cat_name'];?></a></li>
+                                                </ul>
                                                 <?php
                                             }
                                             ?>
-                                        </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <?php
+                            }
+                            ?>
+
                         </div>
                     </div>
                 </div>
@@ -430,8 +169,8 @@ $db_handle = new DBController();
                 $cat_name_en = $fetch_cat_name[0]['c_name_en'];
                 ?>
                 <div class="col-custome-9">
-<h2><?php echo $cat_name;?>
-</h2>
+                    <h2><?php echo $cat_name; ?>
+                    </h2>
                     <div class="row g-sm-4 g-3 row-cols-xxl-4 mt-3 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
                         <?php
                         $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -445,22 +184,23 @@ $db_handle = new DBController();
                                 <div class="product-box-3 h-100 wow fadeInUp">
                                     <div class="product-header">
                                         <div class="product-image">
-                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id'];?>">
+                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
                                                 <img src="admin/<?php
-                                                echo str_replace("650", "250", strtok($fetch_products [$i]['p_image'],','));
+                                                echo str_replace("650", "250", strtok($fetch_products [$i]['p_image'], ','));
                                                 ?>"
                                                      class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
                                             <ul class="product-option">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                    <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id'];?>">
+                                                    <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
                                                         <i data-feather="eye"></i>
                                                     </a>
                                                 </li>
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                                    <a href="Wish-List?id=<?php echo $fetch_products[$i]['id'];?>" class="notifi-wishlist">
+                                                    <a href="#"
+                                                       class="notifi-wishlist">
                                                         <i data-feather="heart"></i>
                                                     </a>
                                                 </li>
@@ -469,9 +209,9 @@ $db_handle = new DBController();
                                     </div>
                                     <div class="product-footer">
                                         <div class="product-detail">
-                                            <span class="span-name"><?php echo $fetch_products[$i]['c_name'];?></span>
-                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id'];?>">
-                                                <h5 class="name"><?php echo $fetch_products[$i]['p_name'];?></h5>
+                                            <span class="span-name"><?php echo $fetch_products[$i]['c_name']; ?></span>
+                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
+                                                <h5 class="name"><?php echo $fetch_products[$i]['p_name']; ?></h5>
                                             </a>
                                             <!--<div class="product-rating mt-2">
                                                 <ul class="rating">
@@ -498,7 +238,8 @@ $db_handle = new DBController();
                                                         </span>
                                             </h5>
                                             <div class="add-to-cart-box bg-white">
-                                                <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id'];?>" class="btn btn-add-cart addcart-button"><?php echo '查看詳情';?>
+                                                <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>"
+                                                   class="btn btn-add-cart addcart-button"><?php echo '查看詳情'; ?>
                                                 </a>
                                             </div>
                                         </div>
@@ -513,18 +254,21 @@ $db_handle = new DBController();
                     <nav class="custome-pagination">
                         <ul class="pagination justify-content-center">
                             <li class="page-item">
-                                <a class="page-link" href="shop.php?catId=<?php echo $id;?>&page=1" tabindex="-1" aria-disabled="true">
+                                <a class="page-link" href="shop.php?catId=<?php echo $id; ?>&page=1" tabindex="-1"
+                                   aria-disabled="true">
                                     <i class="fa-solid fa-angles-left"></i>
                                 </a>
                             </li>
                             <?php
-                            if(isset($_GET['page']) && $_GET['page'] > 1){
+                            if (isset($_GET['page']) && $_GET['page'] > 1) {
                                 $c_page = $_GET['page'];
                                 $n_page = $c_page - 1;
                                 ?>
                                 <li class="page-item">
-                                    <a class="page-link" href="shop.php?catId=<?php echo $id;?>&page=<?php echo $n_page;?>" tabindex="-1" aria-disabled="true">
-                                         Previous
+                                    <a class="page-link"
+                                       href="shop.php?catId=<?php echo $id; ?>&page=<?php echo $n_page; ?>"
+                                       tabindex="-1" aria-disabled="true">
+                                        Previous
                                     </a>
                                 </li>
                                 <?php
@@ -536,31 +280,33 @@ $db_handle = new DBController();
                             $no_new = $db_handle->numRows("SELECT COUNT(id) as c FROM `product` WHERE category_id = '$id'");
 
                             $total_pages = ceil($new[0]['c'] / 8);
-                            if(isset($_GET['page'])){
+                            if (isset($_GET['page'])) {
                                 $page = $_GET['page'];
-                            }else{
+                            } else {
                                 $page = 1;
                             }
                             for ($i = $page; $i <= $total_pages; $i++) {
-                                if($i == $page + 5){
+                                if ($i == $page + 5) {
                                     echo "......";
-                                    $i=$total_pages;
+                                    $i = $total_pages;
                                 }
 
                                 ?>
                                 <li class="page-item">
-                                    <a class="page-link" href="shop.php?catId=<?php echo $id;?>&page=<?php echo $i; ?>"><?php echo $i;?></a>
+                                    <a class="page-link"
+                                       href="shop.php?catId=<?php echo $id; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a>
                                 </li>
                                 <?php
                             }
-                            if(!isset($_GET['page']) || $_GET['page'] < $i - 1){
-                                if(!isset($_GET['page']))
+                            if (!isset($_GET['page']) || $_GET['page'] < $i - 1) {
+                                if (!isset($_GET['page']))
                                     $n_page = 2;
                                 else
                                     $n_page = $_GET['page'] + 1;
                                 ?>
                                 <li class="page-item">
-                                    <a class="page-link" href="shop.php?catId=<?php echo $id;?>&page=<?php echo $n_page; ?>">
+                                    <a class="page-link"
+                                       href="shop.php?catId=<?php echo $id; ?>&page=<?php echo $n_page; ?>">
                                         Next
                                     </a>
                                 </li>
@@ -568,7 +314,8 @@ $db_handle = new DBController();
                             }
                             ?>
                             <li class="page-item">
-                                <a class="page-link" href="shop.php?catId=<?php echo $id;?>&page=<?php echo $i-1; ?>">
+                                <a class="page-link"
+                                   href="shop.php?catId=<?php echo $id; ?>&page=<?php echo $i - 1; ?>">
                                     <i class="fa-solid fa-angles-right"></i>
                                 </a>
                             </li>
@@ -576,7 +323,149 @@ $db_handle = new DBController();
                     </nav>
                 </div>
                 <?php
-            } else {
+            }elseif (isset($_GET['subcat'])) {
+                $id = $_GET['subcat'];
+                $fetch_sub_cat_name = $db_handle->runQuery("select * from sub_cat where id = '$id'");
+                $sub_cat_name = $fetch_sub_cat_name[0]['sub_cat_name'];
+                ?>
+                <div class="col-custome-9">
+                    <h2><?php echo $sub_cat_name; ?>
+                    </h2>
+                    <div class="row g-sm-4 g-3 row-cols-xxl-4 mt-3 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
+                        <?php
+                        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                        // calculate the offset for the SQL query
+                        $offset = ($current_page - 1) * 8;
+                        $fetch_products = $db_handle->runQuery("SELECT * FROM sub_cat,`product` WHERE product.status = '1' and product.subcat_id = sub_cat.id limit 8 OFFSET $offset");
+                        $num_rows = $db_handle->numRows(" SELECT * FROM sub_cat,`product` WHERE product.status = '1' and product.subcat_id = sub_cat.id limit 8 OFFSET $offset");
+                        for ($i = 0; $i < $num_rows; $i++) {
+                            ?>
+                            <div class="search_content">
+                                <div class="product-box-3 h-100 wow fadeInUp">
+                                    <div class="product-header">
+                                        <div class="product-image">
+                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
+                                                <img src="admin/<?php
+                                                echo str_replace("650", "250", strtok($fetch_products [$i]['p_image'], ','));
+                                                ?>"
+                                                     class="img-fluid blur-up lazyload" alt="">
+                                            </a>
+
+                                            <ul class="product-option">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                                    <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
+                                                        <i data-feather="eye"></i>
+                                                    </a>
+                                                </li>
+
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                                    <a href="#"
+                                                       class="notifi-wishlist">
+                                                        <i data-feather="heart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-detail">
+                                            <span class="span-name"><?php echo $fetch_products[$i]['sub_cat_name']; ?></span>
+                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
+                                                <h5 class="name"><?php echo $fetch_products[$i]['p_name']; ?></h5>
+                                            </a>
+                                            <h5 class="price"><span
+                                                        class="theme-color">
+                                                     HK$<?php echo $fetch_products [$i]['product_price'] ?>/g
+                                                        </span>
+                                            </h5>
+                                            <div class="add-to-cart-box bg-white">
+                                                <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>"
+                                                   class="btn btn-add-cart addcart-button"><?php echo '查看詳情'; ?>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                    </div>
+
+                    <nav class="custome-pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="shop.php?catId=<?php echo $id; ?>&page=1" tabindex="-1"
+                                   aria-disabled="true">
+                                    <i class="fa-solid fa-angles-left"></i>
+                                </a>
+                            </li>
+                            <?php
+                            if (isset($_GET['page']) && $_GET['page'] > 1) {
+                                $c_page = $_GET['page'];
+                                $n_page = $c_page - 1;
+                                ?>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="shop.php?subcat=<?php echo $id; ?>&page=<?php echo $n_page; ?>"
+                                       tabindex="-1" aria-disabled="true">
+                                        Previous
+                                    </a>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                            <?php
+                            // calculate the total number of pages
+                            $new = $db_handle->runQuery("SELECT COUNT(id) as c FROM `product` WHERE subcat_id = '$id'");
+                            $no_new = $db_handle->numRows("SELECT COUNT(id) as c FROM `product` WHERE subcat_id = '$id'");
+
+                            $total_pages = ceil($new[0]['c'] / 8);
+                            if (isset($_GET['page'])) {
+                                $page = $_GET['page'];
+                            } else {
+                                $page = 1;
+                            }
+                            for ($i = $page; $i <= $total_pages; $i++) {
+                                if ($i == $page + 5) {
+                                    echo "......";
+                                    $i = $total_pages;
+                                }
+
+                                ?>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="shop.php?subcat=<?php echo $id; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                </li>
+                                <?php
+                            }
+                            if (!isset($_GET['page']) || $_GET['page'] < $i - 1) {
+                                if (!isset($_GET['page']))
+                                    $n_page = 2;
+                                else
+                                    $n_page = $_GET['page'] + 1;
+                                ?>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="shop.php?subcat=<?php echo $id; ?>&page=<?php echo $n_page; ?>">
+                                        Next
+                                    </a>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="shop.php?subcat=<?php echo $id; ?>&page=<?php echo $i - 1; ?>">
+                                    <i class="fa-solid fa-angles-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <?php
+            }
+            else {
                 ?>
                 <div class="col-custome-9">
 
@@ -593,23 +482,25 @@ $db_handle = new DBController();
                                 <div class="product-box-3 h-100 wow fadeInUp">
                                     <div class="product-header">
                                         <div class="product-image">
-                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id'];?>">
+                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
                                                 <img src="admin/<?php
-                                                echo str_replace("650", "250", strtok($fetch_products [$i]['p_image'],','));
+                                                echo str_replace("650", "250", strtok($fetch_products [$i]['p_image'], ','));
                                                 ?>"
                                                      class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
                                             <ul class="product-option">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                    <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id'];?>" data-bs-toggle="modal"
+                                                    <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>"
+                                                       data-bs-toggle="modal"
                                                        data-bs-target="#view">
                                                         <i data-feather="eye"></i>
                                                     </a>
                                                 </li>
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                                    <a href="Wish-List?id=<?php echo $fetch_products[$i]['id'];?>" class="notifi-wishlist">
+                                                    <a href="#"
+                                                       class="notifi-wishlist">
                                                         <i data-feather="heart"></i>
                                                     </a>
                                                 </li>
@@ -618,9 +509,9 @@ $db_handle = new DBController();
                                     </div>
                                     <div class="product-footer">
                                         <div class="product-detail">
-                                            <span class="span-name"><?php echo $fetch_products[$i]['c_name'];?></span>
-                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id'];?>">
-                                                <h5 class="name"><?php echo $fetch_products[$i]['p_name'];?></h5>
+                                            <span class="span-name"><?php echo $fetch_products[$i]['c_name']; ?></span>
+                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
+                                                <h5 class="name"><?php echo $fetch_products[$i]['p_name']; ?></h5>
                                             </a>
 
                                             <h5 class="price"><span
@@ -629,7 +520,8 @@ $db_handle = new DBController();
                                                        </span>
                                             </h5>
                                             <div class="add-to-cart-box bg-white">
-                                                <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id'];?>" class="btn btn-add-cart addcart-button"><?php echo '查看詳情';?>
+                                                <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>"
+                                                   class="btn btn-add-cart addcart-button"><?php echo '查看詳情'; ?>
                                                 </a>
                                             </div>
                                         </div>
@@ -648,12 +540,13 @@ $db_handle = new DBController();
                                 </a>
                             </li>
                             <?php
-                            if(isset($_GET['page']) && $_GET['page'] > 1){
+                            if (isset($_GET['page']) && $_GET['page'] > 1) {
                                 $c_page = $_GET['page'];
                                 $n_page = $c_page - 1;
                                 ?>
                                 <li class="page-item">
-                                    <a class="page-link" href="shop.php?page=<?php echo $n_page;?>" tabindex="-1" aria-disabled="true">
+                                    <a class="page-link" href="shop.php?page=<?php echo $n_page; ?>" tabindex="-1"
+                                       aria-disabled="true">
                                         Previous
                                     </a>
                                 </li>
@@ -666,23 +559,24 @@ $db_handle = new DBController();
                             $no_new = $db_handle->numRows("SELECT COUNT('id') as c FROM product");
 
                             $total_pages = ceil($new[0]['c'] / 8);
-                            if(isset($_GET['page'])){
+                            if (isset($_GET['page'])) {
                                 $page = $_GET['page'];
-                            }else{
+                            } else {
                                 $page = 1;
                             }
                             for ($i = $page; $i <= $total_pages; $i++) {
-                                if($i == $page + 5){
+                                if ($i == $page + 5) {
                                     echo "......";
-                                    $i=$total_pages;
+                                    $i = $total_pages;
                                 }
                                 ?>
                                 <li class="page-item">
-                                    <a class="page-link" href="shop.php?page=<?php echo $i; ?>"><?php echo $i;?></a>
+                                    <a class="page-link" href="shop.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                                 </li>
                                 <?php
-                            } if(!isset($_GET['page']) || $_GET['page'] < $i - 1){
-                                if(!isset($_GET['page']))
+                            }
+                            if (!isset($_GET['page']) || $_GET['page'] < $i - 1) {
+                                if (!isset($_GET['page']))
                                     $n_page = 2;
                                 else
                                     $n_page = $_GET['page'] + 1;
@@ -696,7 +590,7 @@ $db_handle = new DBController();
                             }
                             ?>
                             <li class="page-item">
-                                <a class="page-link" href="shop.php?page=<?php echo $i-1; ?>">
+                                <a class="page-link" href="shop.php?page=<?php echo $i - 1; ?>">
                                     <i class="fa-solid fa-angles-right"></i>
                                 </a>
                             </li>
@@ -712,109 +606,7 @@ $db_handle = new DBController();
 <!-- Shop Section End -->
 
 <!-- Footer Section Start -->
-<footer class="section-t-space footer-section-2 footer-color-3 pt-3">
-    <div class="container-fluid-lg">
-        <div class="main-footer">
-            <div class="row g-md-4 gy-sm-5">
-                <div class="col-xxl-4 col-xl-6 col-sm-6" style="padding-top: 35px;">
-                    <a href="#" class="foot-logo theme-logo">
-                        <img src="assets/images/logo/logo-22.png" style="height: 52px;" class="img-fluid blur-up lazyload" alt="">
-                    </a>
-                    <p class="information-text information-text-2">it is a long established fact that a reader will<br>
-                        be distracted by the readable content.</p>
-                    <ul class="social-icon">
-                        <li class="light-bg">
-                            <a href="#" class="footer-link-color">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li class="light-bg">
-                            <a href="#"
-                               class="footer-link-color">
-                                <i class="fab fa-google"></i>
-                            </a>
-                        </li>
-                        <li class="light-bg">
-                            <a href="#" class="footer-link-color">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="light-bg">
-                            <a href="#" class="footer-link-color">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </li>
-                        <li class="light-bg">
-                            <a href="#" class="footer-link-color">
-                                <i class="fab fa-pinterest-p"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-xxl-4 col-xl-6 col-sm-6 mx-auto">
-                </div>
-
-                <div class="col-xxl-4 col-xl-6 col-sm-6" style="padding-top: 35px;">
-                    <div class="footer-title pt-3">
-                        <h4 class="text-white">Store infomation</h4>
-                    </div>
-                    <ul class="footer-address footer-contact">
-                        <li>
-                            <a href="javascript:void(0)" class="light-text">
-                                <div class="inform-box flex-start-box">
-                                    <i data-feather="map-pin"></i>
-                                    <p>Location</p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)" class="light-text">
-                                <div class="inform-box">
-                                    <i data-feather="phone"></i>
-                                    <p>Call us: 000-000-0000</p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)" class="light-text">
-                                <div class="inform-box">
-                                    <i data-feather="mail"></i>
-                                    <p>Email Us:example@.com</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="sub-footer sub-footer-lite section-b-space section-t-space">
-            <div class="left-footer">
-                <p class="light-text">2023 Copyright By enjoy Powered By NGT</p>
-            </div>
-
-            <ul class="payment-box">
-                <li>
-                    <img src="assets/images/icon/paymant/visa.png" class="blur-up lazyload" alt="">
-                </li>
-                <li>
-                    <img src="assets/images/icon/paymant/discover.png" alt="" class="blur-up lazyload">
-                </li>
-                <li>
-                    <img src="assets/images/icon/paymant/american.png" alt="" class="blur-up lazyload">
-                </li>
-                <li>
-                    <img src="assets/images/icon/paymant/master-card.png" alt="" class="blur-up lazyload">
-                </li>
-                <li>
-                    <img src="assets/images/icon/paymant/giro-pay.png" alt="" class="blur-up lazyload">
-                </li>
-            </ul>
-        </div>
-    </div>
-</footer>
+<?php include ('include/footer.php');?>
 <!-- Footer Section End -->
 
 
@@ -931,7 +723,9 @@ $db_handle = new DBController();
 <!-- Tap to top end -->
 
 <!-- Bg overlay Start -->
-<div class="bg-overlay"></div>
+<div class="bg-overlay">
+
+</div>
 <!-- Bg overlay End -->
 
 <!-- latest jquery-->
@@ -977,10 +771,10 @@ $db_handle = new DBController();
 <script src="assets/js/theme-setting.js"></script>
 
 <script>
-    $(document).ready(function(){
-        $("#search").on("keyup", function() {
+    $(document).ready(function () {
+        $("#search").on("keyup", function () {
             var value = $(this).val().toLowerCase();
-            $(".search_content .product-box-3").filter(function() {
+            $(".search_content .product-box-3").filter(function () {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });

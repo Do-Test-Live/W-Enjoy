@@ -5,15 +5,15 @@ class DBController {
     private $password = "";
     private $database = "enjoy";
     private $from_email='business@rcrpetsworkshop.com';
-    private $notification_email='mingowhk@gmail.com';
+    private $notification_email='admin@enjoy.com';
     private $conn;
 
     function __construct() {
-        if($_SERVER['SERVER_NAME']=="www.rcrpetsworkshop.com"||$_SERVER['SERVER_NAME']=="rcrpetsworkshop.com"){
+        if($_SERVER['SERVER_NAME']=="www.enjoy.ngt.hk"||$_SERVER['SERVER_NAME']=="enjoy.ngt.hk"){
             $this->host = "localhost";
-            $this->user = "ulfgqqowvzdfe";
-            $this->password = "#)*G6%51fb1z";
-            $this->database = "dbdmkyce9ah6a2";
+            $this->user = "ucvdugdxvu2mk";
+            $this->password = "s11j&4{1u#11";
+            $this->database = "dboxsgvavgdgn2";
         }
 
         $this->conn = $this->connectDB();

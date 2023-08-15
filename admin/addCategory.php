@@ -11,7 +11,7 @@ if (!isset($_SESSION['userid'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Add Category | Royal Cheese Admin</title>
+    <title>Add Category | Enjoy</title>
     <?php include 'include/css.php'; ?>
 </head>
 <body>
@@ -57,24 +57,8 @@ if (!isset($_SESSION['userid'])) {
                                 <form action="Insert" method="post" enctype="multipart/form-data">
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
-                                            <label>Category Name</label>
-                                            <input type="text" class="form-control" placeholder="" name="cat_name" required>
-                                        </div>
-                                        <div class="form-group col-md-12">
                                             <label>Category Name (CN)</label>
                                             <input type="text" class="form-control" placeholder="" name="cat_name_cn" required>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label>Category Image</label>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">Upload</span>
-                                                </div>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" name="cat_image" accept="image/png, image/jpeg, image/jpg" required>
-                                                    <label class="custom-file-label">Choose file (png, jpg, jpeg)</label>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="text-center">

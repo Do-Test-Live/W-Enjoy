@@ -28,6 +28,17 @@
                     <li><a href="Category">Category List</a></li>
                 </ul>
             </li>
+
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-381-television"></i>
+                    <span class="nav-text">Sub Category</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="Add-Subcategory">Add Subcategory</a></li>
+                    <li><a href="Subcategory">Subcategory List</a></li>
+                </ul>
+            </li>
             <!--<li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-381-upload"></i>

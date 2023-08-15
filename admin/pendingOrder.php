@@ -11,7 +11,7 @@ if (!isset($_SESSION['userid'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Pending Order | Royal Cheese Admin</title>
+    <title>Pending Order | Enjoy</title>
     <!-- Datatable -->
     <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <?php include 'include/css.php'; ?>
@@ -59,6 +59,7 @@ if (!isset($_SESSION['userid'])) {
                                 <thead>
                                 <tr>
                                     <th>SL</th>
+                                    <th>Order No</th>
                                     <th>Customer Name</th>
                                     <th>Email</th>
                                     <th>Contact No.</th>
@@ -82,6 +83,7 @@ if (!isset($_SESSION['userid'])) {
                                     ?>
                                     <tr>
                                         <td><?php echo $i + 1; ?></td>
+                                        <td>E-<?php echo $bill_data[$i]["id"]; ?></td>
                                         <td><?php echo $bill_data[$i]["f_name"] . ' ' . $bill_data[$i]["l_name"]; ?></td>
                                         <td><?php echo $bill_data[$i]["email"]; ?></td>
                                         <td><?php echo $bill_data[$i]["phone"]; ?></td>

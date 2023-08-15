@@ -5077,7 +5077,6 @@ body ::selection {
 .bg-overlay {
     width: 100vw;
     height: 100vh;
-    background-color: #222;
     position: fixed;
     z-index: 9;
     top: 0;
@@ -5089,7 +5088,7 @@ body ::selection {
 
 .bg-overlay.show {
     visibility: visible;
-    opacity: 0.5
+    opacity: 0.8;
 }
 
 ul {
@@ -9144,7 +9143,8 @@ header .header-nav .header-nav-left .category-dropdown {
     }
 
     header .header-nav .header-nav-left .category-dropdown.show {
-        left: 0
+        left: 0;
+        overflow: scroll;
     }
 
     [dir="rtl"] header .header-nav .header-nav-left .category-dropdown.show {
@@ -9193,7 +9193,7 @@ header .header-nav .header-nav-left .category-dropdown .category-list {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     gap: 25px;
-    padding: 20px 25px
+    padding: 0 25px
 }
 
 header .header-nav .header-nav-left .category-dropdown .category-list li {
@@ -18024,7 +18024,7 @@ header .offcanvas-backdrop {
 
 .product-box-3 .product-header .product-image .product-option li {
     position: relative;
-    width: 33.33%
+    width: 50%
 }
 
 .product-box-3 .product-header .product-image .product-option li a {
