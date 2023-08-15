@@ -49,7 +49,7 @@
                             <a href="javascript:void(0)" class="light-text">
                                 <div class="inform-box flex-start-box">
                                     <i data-feather="map-pin"></i>
-                                    <p>Location</p>
+                                    <p>沙田京瑞廣場二期1樓159號鋪</p>
                                 </div>
                             </a>
                         </li>
@@ -58,7 +58,7 @@
                             <a href="javascript:void(0)" class="light-text">
                                 <div class="inform-box">
                                     <i data-feather="phone"></i>
-                                    <p>Call us: 000-000-0000</p>
+                                    <p>Call us: 6190 8226</p>
                                 </div>
                             </a>
                         </li>

@@ -124,24 +124,29 @@ include ('cart_backend.php');
                             $fetch_cat = $db_handle->runQuery("select * from category where status = '1'");
                             $no_fetch_cat = $db_handle->numRows("select * from category where status = '1'");
                             for ($i = 0; $i < $no_fetch_cat; $i++) {
+                                $cat_id = $fetch_cat[$i]['id'];
+                                $fetch_sub_cat = $db_handle->runQuery("select * from sub_cat where cat_id = '$cat_id'");
+                                $no_fetch_sub_cat = $db_handle->numRows("select * from sub_cat where cat_id = '$cat_id'");
                                 ?>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading<?php echo $fetch_cat[$i]['id']; ?>">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#collapse<?php echo $fetch_cat[$i]['id']; ?>"
-                                                aria-expanded="true"
-                                                aria-controls="collapse<?php echo $fetch_cat[$i]['id']; ?>">
-                                            <span><?php echo $fetch_cat[$i]['c_name']; ?></span>
-                                        </button>
+                                        <?php
+                                        if($no_fetch_sub_cat > 0){
+                                            ?>
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapse<?php echo $fetch_cat[$i]['id']; ?>"
+                                                    aria-expanded="true"
+                                                    aria-controls="collapse<?php echo $fetch_cat[$i]['id']; ?>"></button>
+                                            <?php
+                                        }
+                                        ?>
+                                            <a href="shop.php?catId=<?php echo $fetch_cat[$i]['id']; ?>" style="font-size: 20px;color: #222;text-decoration: none;"><?php echo $fetch_cat[$i]['c_name']; ?></a>
                                     </h2>
                                     <div id="collapse<?php echo $fetch_cat[$i]['id']; ?>"
                                          class="accordion-collapse collapse show"
                                          aria-labelledby="heading<?php echo $fetch_cat[$i]['id']; ?>">
                                         <div class="accordion-body">
                                             <?php
-                                            $cat_id = $fetch_cat[$i]['id'];
-                                            $fetch_sub_cat = $db_handle->runQuery("select * from sub_cat where cat_id = '$cat_id'");
-                                            $no_fetch_sub_cat = $db_handle->numRows("select * from sub_cat where cat_id = '$cat_id'");
                                             for ($j = 0; $j < $no_fetch_sub_cat; $j++) {
                                                 ?>
                                                 <ul class="category-list custom-padding custom-height">
@@ -166,7 +171,6 @@ include ('cart_backend.php');
                 $id = $_GET['catId'];
                 $fetch_cat_name = $db_handle->runQuery("select * from category where id = '$id'");
                 $cat_name = $fetch_cat_name[0]['c_name'];
-                $cat_name_en = $fetch_cat_name[0]['c_name_en'];
                 ?>
                 <div class="col-custome-9">
                     <h2><?php echo $cat_name; ?>
@@ -192,13 +196,13 @@ include ('cart_backend.php');
                                             </a>
 
                                             <ul class="product-option">
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="查看">
                                                     <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
                                                         <i data-feather="eye"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="願望清單">
                                                     <a href="#"
                                                        class="notifi-wishlist">
                                                         <i data-feather="heart"></i>

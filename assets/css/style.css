@@ -28016,7 +28016,7 @@ header .offcanvas-backdrop {
     font-size: 18px;
     padding: 0 0 8px 0;
     font-weight: 600;
-    margin-bottom: 9px
+    margin-bottom: 0px;
 }
 
 .shop-section .left-box .shop-left-sidebar .custome-accordion .accordion-item .accordion-header .accordion-button.collapsed::before {
@@ -28053,7 +28053,6 @@ header .offcanvas-backdrop {
     justify-content: center;
     top: 0;
     right: 5px;
-    background-color: #f7f6f4;
     font-size: 15px;
     border-radius: 100%;
     -webkit-transition: all .3s ease-in-out;

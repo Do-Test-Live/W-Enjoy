@@ -103,7 +103,7 @@
                             <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
                                 <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
                                     <div class="offcanvas-header navbar-shadow">
-                                        <h5>Menu</h5>
+                                        <h5>選單</h5>
                                         <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
                                                 aria-label="Close"></button>
                                     </div>
@@ -169,7 +169,7 @@
                                                 <i data-feather="user"></i>
                                             </div>
                                             <div class="delivery-detail">
-                                                <h6>你好，,</h6>
+                                                <h6>你好，</h6>
                                                 <h5><?php echo $fetch_customer[0]['customer_name'];?></h5>
                                             </div>
                                         </div>
@@ -197,7 +197,7 @@
                                                 <i data-feather="user"></i>
                                             </div>
                                             <div class="delivery-detail">
-                                                <h6>你好，,</h6>
+                                                <h6>你好，</h6>
                                                 <h5>使用者</h5>
                                             </div>
                                         </div>
