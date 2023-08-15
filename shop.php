@@ -238,7 +238,7 @@ include ('cart_backend.php');
                                             </div>-->
                                             <h5 class="price"><span
                                                         class="theme-color">
-                                                     HK$<?php echo $fetch_products [$i]['product_price'] ?>/g
+                                                     HK$<?php echo $fetch_products [$i]['product_price'] ?>
                                                         </span>
                                             </h5>
                                             <div class="add-to-cart-box bg-white">
@@ -379,7 +379,7 @@ include ('cart_backend.php');
                                             </a>
                                             <h5 class="price"><span
                                                         class="theme-color">
-                                                     HK$<?php echo $fetch_products [$i]['product_price'] ?>/g
+                                                     HK$<?php echo $fetch_products [$i]['product_price'] ?>
                                                         </span>
                                             </h5>
                                             <div class="add-to-cart-box bg-white">
@@ -520,7 +520,7 @@ include ('cart_backend.php');
 
                                             <h5 class="price"><span
                                                         class="theme-color">
-                                                        HK$<?php echo $fetch_products [$i]['product_price']; ?>/g
+                                                        HK$<?php echo $fetch_products [$i]['product_price']; ?>
                                                        </span>
                                             </h5>
                                             <div class="add-to-cart-box bg-white">

@@ -161,6 +161,7 @@
                                 </li>
                                 <?php
                                 if(isset($_SESSION['id'])){
+                                    $customer_id = $_SESSION['id'];
                                     $fetch_customer = $db_handle->runQuery("select * from customer where id = '$customer_id'");
                                     ?>
                                     <li class="right-side onhover-dropdown">
@@ -198,7 +199,7 @@
                                             </div>
                                             <div class="delivery-detail">
                                                 <h6>你好，</h6>
-                                                <h5>使用者</h5>
+                                                <h5>客人</h5>
                                             </div>
                                         </div>
 

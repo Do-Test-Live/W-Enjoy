@@ -6,11 +6,10 @@ date_default_timezone_set("Asia/Hong_Kong");
 
 if (isset($_POST["add_cat"])) {
     $name_cn = $db_handle->checkValue($_POST['cat_name_cn']);
-    $cat_sub_heading = $db_handle->checkValue($_POST['cat_sub_heading']);
 
     $inserted_at = date("Y-m-d H:i:s");
 
-    $insert = $db_handle->insertQuery("INSERT INTO `category`(`c_name`, `cat_sub_heading`, `inserted_at`) VALUES ('$name_cn','$cat_sub_heading','$inserted_at')");
+    $insert = $db_handle->insertQuery("INSERT INTO `category`(`c_name`, `inserted_at`) VALUES ('$name_cn','$inserted_at')");
 
     echo "<script>
                 document.cookie = 'alert = 3;';
@@ -80,6 +79,7 @@ if (isset($_POST["add_product"])) {
         $products_image = '';
     }
 
+    echo $product_subcategory;
     $insert = $db_handle->insertQuery("INSERT INTO `product` (`category_id`, `product_code`, `p_name`,`product_price`, `description`, `p_image`,`status`, `inserted_at`,`subcat_id`) VALUES 
                 ('$product_category','$product_code','$product_name','$selling_price','$product_description','$products_image','$product_status','$inserted_at','$product_subcategory')");
     if ($insert) {

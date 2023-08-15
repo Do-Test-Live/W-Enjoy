@@ -6,8 +6,7 @@
                     <a href="#" class="foot-logo theme-logo">
                         <img src="assets/images/logo/logo-22.png" style="height: 52px;" class="img-fluid blur-up lazyload" alt="">
                     </a>
-                    <p class="information-text information-text-2">it is a long established fact that a reader will<br>
-                        be distracted by the readable content.</p>
+                    <p class="information-text information-text-2">歡迎來到ENJOY！我們為您提供高質量、多樣化的成人產品。探索您的愉悅世界，創造美好的親密時刻！</p>
                     <ul class="social-icon">
                         <li class="light-bg">
                             <a href="#" class="footer-link-color">
@@ -58,16 +57,7 @@
                             <a href="javascript:void(0)" class="light-text">
                                 <div class="inform-box">
                                     <i data-feather="phone"></i>
-                                    <p>Call us: 6190 8226</p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)" class="light-text">
-                                <div class="inform-box">
-                                    <i data-feather="mail"></i>
-                                    <p>Email Us:example@.com</p>
+                                    <p>電話: 6190 8226</p>
                                 </div>
                             </a>
                         </li>

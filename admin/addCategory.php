@@ -61,12 +61,6 @@ if (!isset($_SESSION['userid'])) {
                                             <input type="text" class="form-control" placeholder="" name="cat_name_cn" required>
                                         </div>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-12">
-                                            <label>Category Sub Heading</label>
-                                            <input type="text" class="form-control" placeholder="" name="cat_sub_heading">
-                                        </div>
-                                    </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary w-50" name="add_cat">Submit</button>
                                     </div>

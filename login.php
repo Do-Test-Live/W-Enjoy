@@ -164,7 +164,7 @@ include ('cart_backend.php');
 
                                 <div class="col-12 m-3">
                                     <div class="forgot-box">
-                                        <a href="#" class="forgot-password"><?php echo '忘記密碼？';?></a>
+                                        <a href="forget_pass.php" class="forgot-password"><?php echo '忘記密碼？';?></a>
                                     </div>
                                 </div>
 

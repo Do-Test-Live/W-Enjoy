@@ -72,14 +72,6 @@ if (!isset($_SESSION['userid'])) {
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label">Category Name</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="cat"
-                                                       placeholder="Category Name"
-                                                       value="<?php echo $data[0]["c_name"]; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label">Status</label>
                                             <div class="col-sm-9">
                                                 <select class="default-select  form-control wide" name="status"
@@ -118,7 +110,6 @@ if (!isset($_SESSION['userid'])) {
                                         <tr>
                                             <th>SL</th>
                                             <th>Category Name</th>
-                                            <th>Category Sub Heading</th>
                                             <th>Insert Date</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -134,7 +125,6 @@ if (!isset($_SESSION['userid'])) {
                                             <tr>
                                                 <td><?php echo $i + 1; ?></td>
                                                 <td><?php echo $category_data[$i]["c_name"]; ?></td>
-                                                <td><?php echo $category_data[$i]["cat_sub_heading"]; ?></td>
                                                 <?php
                                                 $date = date_create($category_data[$i]["inserted_at"]);
                                                 $date_formatted = date_format($date, "d F y, g:i A");

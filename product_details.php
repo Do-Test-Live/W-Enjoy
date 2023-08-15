@@ -168,25 +168,6 @@ include ('cart_backend.php');
 
                             <div class="price-rating">
                                 <div class="product-rating custom-rate">
-                                    <?php
-                                    $quantity = 0;
-                                    $fetch_quantity_no = $db_handle->numRows("select quantity from stock where product_id = '$product_id'");
-                                    $fetch_quantity = $db_handle->runQuery("select quantity from stock where product_id = '$product_id'");
-
-                                    if (isset($fetch_quantity)) {
-                                        $quantity = $fetch_quantity[0]['quantity'];
-                                    }
-
-                                    if ($fetch_quantity_no > 0 && $quantity > 0) {
-                                        ?>
-                                        <h6 class="theme-color"><?php echo '尚有存貨';?></h6>
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <h6 class="theme-color"><?php echo '預購'; ?></h6>
-                                        <?php
-                                    }
-                                    ?>
                                 </div>
                                 <h2 class="theme-color">HK$ <?php  echo $product[0]['product_price'];?></h2>
                             </div>
@@ -338,21 +319,6 @@ include ('cart_backend.php');
                                                 <i data-feather="star"></i>
                                             </li>
                                         </ul>-->
-
-                                        <?php
-                                        $fetch_quantity_no = $db_handle->numRows("select quantity from stock where product_id = '$product_id'");
-                                        $fetch_quantity = $db_handle->runQuery("select quantity from stock where product_id = '$product_id'");
-                                        $quantity = $fetch_quantity[0]['quantity'];
-                                        if ($fetch_quantity_no > 0 && $quantity > 0) {
-                                            ?>
-                                            <h6 class="theme-color"><?php echo '尚有存貨';?></h6>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <h6 class="theme-color"><?php echo '預購';?></h6>
-                                            <?php
-                                        }
-                                        ?>
                                     </div>
 
                                     <div class="add-to-cart-box bg-white">
@@ -469,50 +435,6 @@ include ('cart_backend.php');
 
 <!-- Tap to top start -->
 <div class="theme-option theme-option-2">
-    <div class="setting-box">
-        <button class="btn setting-button">
-            <i class="fa-solid fa-gear"></i>
-        </button>
-
-        <div class="theme-setting-2">
-            <div class="theme-box">
-                <ul>
-                    <li>
-                        <div class="setting-name">
-                            <h4>Color</h4>
-                        </div>
-                        <div class="theme-setting-button color-picker">
-                            <form class="form-control">
-                                <label for="colorPick" class="form-label mb-0">Theme Color</label>
-                                <input type="color" class="form-control form-control-color" id="colorPick"
-                                       value="#0da487" title="Choose your color">
-                            </form>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="setting-name">
-                            <h4>Dark</h4>
-                        </div>
-                        <div class="theme-setting-button">
-                            <button class="btn btn-2 outline" id="darkButton">Dark</button>
-                            <button class="btn btn-2 unline" id="lightButton">Light</button>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="setting-name">
-                            <h4>RTL</h4>
-                        </div>
-                        <div class="theme-setting-button rtl">
-                            <button class="btn btn-2 rtl-unline">LTR</button>
-                            <button class="btn btn-2 rtl-outline">RTL</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
     <div class="back-to-top">
         <a id="back-to-top" href="#">
