@@ -340,24 +340,24 @@ include ('cart_backend.php');
                         $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
                         // calculate the offset for the SQL query
                         $offset = ($current_page - 1) * 8;
-                        $fetch_products = $db_handle->runQuery("SELECT * FROM sub_cat,`product` WHERE product.status = '1' and product.subcat_id = sub_cat.id limit 8 OFFSET $offset");
-                        $num_rows = $db_handle->numRows(" SELECT * FROM sub_cat,`product` WHERE product.status = '1' and product.subcat_id = sub_cat.id limit 8 OFFSET $offset");
-                        for ($i = 0; $i < $num_rows; $i++) {
+                        $fetch_subcat_products = $db_handle->runQuery("SELECT * FROM sub_cat,`product` WHERE product.status = '1' and product.subcat_id = sub_cat.id and product.subcat_id = '$id' limit 8 OFFSET $offset");
+                        $no_fetch_subcat_products = $db_handle->numRows(" SELECT * FROM sub_cat,`product` WHERE product.status = '1' and product.subcat_id = sub_cat.id and product.subcat_id = '$id' limit 8 OFFSET $offset");
+                        for ($i = 0; $i < $no_fetch_subcat_products; $i++) {
                             ?>
                             <div class="search_content">
                                 <div class="product-box-3 h-100 wow fadeInUp">
                                     <div class="product-header">
                                         <div class="product-image">
-                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
+                                            <a href="product_details.php?product_id=<?php echo $fetch_subcat_products[$i]['id']; ?>">
                                                 <img src="admin/<?php
-                                                echo str_replace("650", "250", strtok($fetch_products [$i]['p_image'], ','));
+                                                echo str_replace("650", "250", strtok($fetch_subcat_products [$i]['p_image'], ','));
                                                 ?>"
                                                      class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
                                             <ul class="product-option">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                    <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
+                                                    <a href="product_details.php?product_id=<?php echo $fetch_subcat_products[$i]['id']; ?>">
                                                         <i data-feather="eye"></i>
                                                     </a>
                                                 </li>
@@ -373,17 +373,17 @@ include ('cart_backend.php');
                                     </div>
                                     <div class="product-footer">
                                         <div class="product-detail">
-                                            <span class="span-name"><?php echo $fetch_products[$i]['sub_cat_name']; ?></span>
-                                            <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>">
-                                                <h5 class="name"><?php echo $fetch_products[$i]['p_name']; ?></h5>
+                                            <span class="span-name"><?php echo $fetch_subcat_products[$i]['sub_cat_name']; ?></span>
+                                            <a href="product_details.php?product_id=<?php echo $fetch_subcat_products[$i]['id']; ?>">
+                                                <h5 class="name"><?php echo $fetch_subcat_products[$i]['p_name']; ?></h5>
                                             </a>
                                             <h5 class="price"><span
                                                         class="theme-color">
-                                                     HK$<?php echo $fetch_products [$i]['product_price'] ?>
+                                                     HK$<?php echo $fetch_subcat_products [$i]['product_price'] ?>
                                                         </span>
                                             </h5>
                                             <div class="add-to-cart-box bg-white">
-                                                <a href="product_details.php?product_id=<?php echo $fetch_products[$i]['id']; ?>"
+                                                <a href="product_details.php?product_id=<?php echo $fetch_subcat_products[$i]['id']; ?>"
                                                    class="btn btn-add-cart addcart-button"><?php echo '查看詳情'; ?>
                                                 </a>
                                             </div>
@@ -399,7 +399,7 @@ include ('cart_backend.php');
                     <nav class="custome-pagination">
                         <ul class="pagination justify-content-center">
                             <li class="page-item">
-                                <a class="page-link" href="shop.php?catId=<?php echo $id; ?>&page=1" tabindex="-1"
+                                <a class="page-link" href="shop.php?subcat=<?php echo $id; ?>&page=1" tabindex="-1"
                                    aria-disabled="true">
                                     <i class="fa-solid fa-angles-left"></i>
                                 </a>
