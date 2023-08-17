@@ -7,6 +7,8 @@
       <sourceFolder url="file://$MODULE_DIR$/stripe-php/tests" isTestSource="true" packagePrefix="Stripe\" />
       <sourceFolder url="file://$MODULE_DIR$/stripe-php/src" isTestSource="false" packagePrefix="PHPMailer\PHPMailer\" />
       <sourceFolder url="file://$MODULE_DIR$/stripe-php/test" isTestSource="true" packagePrefix="PHPMailer\Test\" />
+      <sourceFolder url="file://$MODULE_DIR$/PHPMailer/src" isTestSource="false" packagePrefix="PHPMailer\PHPMailer\" />
+      <sourceFolder url="file://$MODULE_DIR$/PHPMailer/test" isTestSource="true" packagePrefix="PHPMailer\Test\" />
       <sourceFolder url="file://$MODULE_DIR$/stripe-php/tests/Stripe" isTestSource="true" packagePrefix="Stripe\" />
     </content>
     <orderEntry type="inheritedJdk" />
