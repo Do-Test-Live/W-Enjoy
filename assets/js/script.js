@@ -96,38 +96,6 @@
     03. Footer function js
 ==========================*/
 var contentwidth = $(window).width();
-if (contentwidth < "576") {
-    $(".footer-title h4").append(
-        '<span class="according-menu float-end"><i class="fa-solid fa-angle-down"></i></span>'
-    );
-    $(".footer-title").on("click", function () {
-        $(".footer-title")
-            .removeClass("active")
-            .find("span")
-            .replaceWith(
-                '<span class="according-menu float-end"><i class="fa-solid fa-angle-down"></i></span>'
-            );
-        $(".footer-contact, .footer-contain").slideUp("normal");
-        if ($(this).next().is(":hidden") == true) {
-            $(this).addClass("active");
-            $(this)
-                .find("span")
-                .replaceWith(
-                    '<span class="according-menu float-end"><i class="fas fa-chevron-up"></i></span>'
-                );
-            $(this).next().slideDown("normal");
-        } else {
-            $(this)
-                .find("span")
-                .replaceWith(
-                    '<span class="according-menu float-end"><i class="fa-solid fa-angle-down"></i></span>'
-                );
-        }
-    });
-    $(".footer-contact, .footer-contain").hide();
-} else {
-    $(".footer-contact, .footer-contain").show();
-}
 
 /*=====================
   04. mobile menu active class js

@@ -4,7 +4,7 @@
             <div class="row g-md-4 gy-sm-5">
                 <div class="col-xxl-4 col-xl-6 col-sm-6" style="padding-top: 35px;">
                     <a href="#" class="foot-logo theme-logo">
-                        <img src="assets/images/logo/logo-22.png" style="height: 52px;" class="img-fluid blur-up lazyload" alt="">
+                        <img src="assets/images/logo/logo-22.png" class="img-fluid blur-up lazyload" alt="">
                     </a>
                     <p class="information-text information-text-2">歡迎來到ENJOY！我們為您提供高質量、多樣化的成人產品。探索您的愉悅世界，創造美好的親密時刻！</p>
                     <ul class="social-icon">
