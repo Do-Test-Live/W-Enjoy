@@ -98,10 +98,10 @@
                         <a href="index.php" class="web-logo nav-logo">
                             <img src="assets/images/logo/logo-1.png" style="height: 52px;" class="img-fluid blur-up lazyload" alt="">
                         </a>
-
                         <div class="header-nav-middle">
                             <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
                                 <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
+
                                     <div class="offcanvas-header navbar-shadow">
                                         <h5>選單</h5>
                                         <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
@@ -126,6 +126,16 @@
                                 </div>
                             </div>
                         </div>
+                        <form action="search_result.php" method="post">
+                            <div class="search-box">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="我正在搜索..." name="keyword" required>
+                                    <button class="btn" type="submit" id="button-addon2" name="search">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
 
                         <div class="rightside-box">
                             <div class="search-full">
@@ -295,8 +305,8 @@
             </a>
         </li>
         <li>
-            <a href="#" class="search-box" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="fa-solid fa-magnifying-glass text-white" style="font-size: 18px"></i>
+            <a href="shop.php" class="search-box"  data-toggle="modal" data-target="#exampleModal">
+                <i class="fa-solid fa-shop text-white" style="font-size: 18px"></i>
             </a>
         </li>
         <li>
@@ -306,4 +316,3 @@
         </li>
     </ul>
 </div>
-<!-- mobile fix menu end -->
