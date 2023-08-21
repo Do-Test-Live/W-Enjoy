@@ -4,14 +4,14 @@ require_once("include/dbController.php");
 $db_handle = new DBController();
 if (!isset($_SESSION['userid'])) {
     header("Location: Login");
-}?>
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Add Subcategory | Enjoy</title>
+    <title>Add Sub Subcategory | Enjoy</title>
     <?php include 'include/css.php'; ?>
 </head>
 <body>
@@ -50,19 +50,21 @@ if (!isset($_SESSION['userid'])) {
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Add Subcategory</h4>
+                            <h4 class="card-title">Add Sub Subcategory</h4>
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
                                 <form action="Insert" method="post" enctype="multipart/form-data">
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
-                                            <label>Subcategory Name</label>
-                                            <input type="text" class="form-control" placeholder="" name="sub_cat_name" required>
+                                            <label>Sub Subcategory Name</label>
+                                            <input type="text" class="form-control" placeholder="" name="sub_sub_cat_name"
+                                                   required>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Select Product Category *</label>
-                                            <select class="form-control default-select" id="sel1" name="category" required>
+                                            <select class="form-control" id="sel1" onchange="fetchSubCategory(this.value)" name="category"
+                                                    required>
                                                 <?php
                                                 $cat = $db_handle->runQuery("SELECT * FROM `category`");
                                                 $row_count = $db_handle->numRows("SELECT * FROM `category`");
@@ -74,9 +76,17 @@ if (!isset($_SESSION['userid'])) {
                                                 ?>
                                             </select>
                                         </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Select Product Subcategory *</label>
+                                            <select class="form-control" id="sub_category" name="sub_category"
+                                                    required>
+                                                <option>Please Select Category First</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary w-50" name="add_sub_cat">Submit</button>
+                                        <button type="submit" class="btn btn-primary w-50" name="add_sub_sub_cat">Submit
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -98,5 +108,30 @@ if (!isset($_SESSION['userid'])) {
 ***********************************-->
 
 <?php include 'include/js.php'; ?>
+<script>
+    function fetchSubCategory(val) {
+        let sub_category = document.getElementById('sub_category');
+        removeOptions(sub_category);
+
+        $.ajax({
+            url: "fetchSubcategory.php",
+            type: "POST",
+            data: {
+                category_id: val
+            },
+            cache: false,
+            success: function(result){
+                $("#sub_category").html(result);
+            }
+        });
+    }
+
+    function removeOptions(selectElement) {
+        let i, L = selectElement.options.length - 1;
+        for (i = L; i >= 0; i--) {
+            selectElement.remove(i);
+        }
+    }
+</script>
 </body>
 </html>

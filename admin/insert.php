@@ -248,3 +248,18 @@ if (isset($_POST['add_sub_cat'])) {
                 </script>";
     }
 }
+
+if (isset($_POST['add_sub_sub_cat'])) {
+    $sub_sub_cat_name = $db_handle->checkValue($_POST['sub_sub_cat_name']);
+    $sub_category = $db_handle->checkValue($_POST['sub_category']);
+    $inserted_at = date("Y-m-d H:i:s");
+
+    $insert_sub_sub_cat = $db_handle->insertQuery("INSERT INTO `sub_sub_cat`(`sub_cat_id`, `sub_sub_name_cn`,  `inserted_at`) VALUES ('$sub_category','$sub_sub_cat_name','$inserted_at')");
+
+    if ($insert_sub_sub_cat) {
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Add-Sub-Subcategory';
+                </script>";
+    }
+}

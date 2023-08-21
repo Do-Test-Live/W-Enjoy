@@ -342,7 +342,22 @@ if (isset($_POST['updateSubCategory'])) {
     if ($update_subcat) {
         echo "<script>
                 document.cookie = 'alert = 3;';
-                window.location.href='Add-Subcategory';
+                window.location.href='Subcategory';
+                </script>";
+    }
+}
+
+if (isset($_POST['updateSubSubCategory'])) {
+    $id = $db_handle->checkValue($_POST['id']);
+    $sub_sub_cat_name = $db_handle->checkValue($_POST['sub_sub_cat_name']);
+    $sub_category = $db_handle->checkValue($_POST['sub_category']);
+    $updated_at = date("Y-m-d H:i:s");
+
+    $update_subcat = $db_handle->insertQuery("UPDATE `sub_sub_cat` SET `sub_cat_id`='$sub_category',`sub_sub_name_cn`='$sub_sub_cat_name',`updated_at`='$updated_at' WHERE id='$id'");
+    if ($update_subcat) {
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Sub-Subcategory';
                 </script>";
     }
 }

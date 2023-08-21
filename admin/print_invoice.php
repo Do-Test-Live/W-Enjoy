@@ -343,7 +343,7 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
 
         .cs-invoice_btn.cs-color1 {
             color: #111;
-            background: rgb(255 205 26 / 48%) !important;
+            background: rgb(237 30 121) !important;
         }
 
         .cs-invoice_btn.cs-color1:hover {
@@ -352,7 +352,7 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
 
         .cs-invoice_btn.cs-color2 {
             color: #fff;
-            background: #ffcc18 !important;
+            background: rgb(237 30 121) !important;
         }
 
         .cs-invoice_btn.cs-color2:hover {
@@ -581,7 +581,7 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                 <div class="cs-invoice_left">
 
                     <p class="cs-invoice_number cs-primary_color cs-mb5 cs-f16"><b class="cs-primary_color">收帳單 / Invoice</p>
-                    <p class="cs-invoice_number cs-primary_color cs-mb5 cs-f16"><b class="cs-primary_color">發票號碼：</b> #WHK<?php echo $billing_details[0]['id']; ?></p>
+                    <p class="cs-invoice_number cs-primary_color cs-mb5 cs-f16"><b class="cs-primary_color">發票號碼：</b> #E-<?php echo $billing_details[0]['id']; ?></p>
                     <p class="cs-invoice_date cs-primary_color cs-m0"><b class="cs-primary_color">日期: </b>
                         <?php
                         $date = date_create($billing_details[0]["updated_at"]);
@@ -590,7 +590,7 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                     </p>
                 </div>
                 <div class="cs-invoice_right cs-text_right">
-                    <div class="cs-logo cs-mb5"><img src="../assets/images/logo/2.png" alt="Logo" style="width: 200px">
+                    <div class="cs-logo cs-mb5"><img src="../assets/images/logo/logo-1.png" alt="Logo" style="width: 200px">
                     </div>
                 </div>
             </div>
@@ -607,9 +607,9 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                 <div class="cs-invoice_right cs-text_right">
                     <b class="cs-primary_color">支付給:</b>
                     <p>
-                        Royal Cheese 活籽兒童用品店 <br>
-                        大圍成運路 21-23 號群力工業大廈 3 樓 1 室 <br>
-                        電話：5605 8389 / 電郵： Royal Cheese.order@gmail.com
+                        Enjoy <br>
+                        沙田京瑞廣場二期1樓159號鋪<br>
+                        電話：6190 8226
                     </p>
                 </div>
             </div>
@@ -647,12 +647,6 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                         </table>
                     </div>
                     <div class="cs-invoice_footer cs-border_top">
-                        <div class="cs-left_footer cs-mobile_hide">
-                            <p class="cs-mb0"><b class="cs-primary_color">郵寄方式:</b></p>
-                            <p class="cs-m0"><?php echo $billing_details[0]['shipping_method'];?></p>
-                            <p class="cs-mb0"><b class="cs-primary_color">付款方式:</b></p>
-                            <p class="cs-m0"><?php echo $billing_details[0]['payment_type'];?></p>
-                        </div>
                         <div class="cs-right_footer">
                             <table>
                                 <tbody>
@@ -681,29 +675,12 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                             <tr class="cs-border_none">
                                 <td class="cs-width_3 cs-border_top_0 cs-bold cs-f16 cs-primary_color">全部的</td>
                                 <td class="cs-width_3 cs-border_top_0 cs-bold cs-f16 cs-primary_color cs-text_right">
-                                   <?php echo $billing_details[0]['total_purchase'] + $billing_details[0]['delivery_charges'] ;?> HKD
+                                    <?php echo $billing_details[0]['total_purchase'] + $billing_details[0]['delivery_charges'] ;?> HKD
                                 </td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-            <div class="cs-note">
-                <div class="cs-note_left">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-                        <path d="M416 221.25V416a48 48 0 01-48 48H144a48 48 0 01-48-48V96a48 48 0 0148-48h98.75a32 32 0 0122.62 9.37l141.26 141.26a32 32 0 019.37 22.62z"
-                              fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/>
-                        <path d="M256 56v120a32 32 0 0032 32h120M176 288h160M176 368h160" fill="none"
-                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
-                    </svg>
-                </div>
-                <div class="cs-note_right">
-                    <p class="cs-mb0"><b class="cs-primary_color cs-bold">付款方法:</b></p>
-                    <p class="cs-m0">1) 郵寄支票 ：支票抬頭請書明受款人為「 Royal Cheese」，信封請註明 Attn: Royal Cheese
-                        並郵寄往大圍成運路 21-23 號群力工業大廈 3 樓 1 室</p>
-                    <p class="cs-m0">2) 直接存款 ：銀行戶口號碼為 769-334699-883 （恆生銀行）
-                        銀行戶口名稱: Royal Cheese</p>
                 </div>
             </div>
         </div>
