@@ -343,7 +343,7 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
 
         .cs-invoice_btn.cs-color1 {
             color: #111;
-            background: rgb(255 205 26 / 48%) !important;
+            background: rgb(237 30 121) !important;
         }
 
         .cs-invoice_btn.cs-color1:hover {
@@ -352,7 +352,7 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
 
         .cs-invoice_btn.cs-color2 {
             color: #fff;
-            background: #ffcc18 !important;
+            background: rgb(237 30 121) !important;
         }
 
         .cs-invoice_btn.cs-color2:hover {
@@ -581,7 +581,7 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                 <div class="cs-invoice_left">
 
                     <p class="cs-invoice_number cs-primary_color cs-mb5 cs-f16"><b class="cs-primary_color">收帳單 / Invoice</p>
-                    <p class="cs-invoice_number cs-primary_color cs-mb5 cs-f16"><b class="cs-primary_color">發票號碼：</b> #WHK<?php echo $billing_details[0]['id']; ?></p>
+                    <p class="cs-invoice_number cs-primary_color cs-mb5 cs-f16"><b class="cs-primary_color">發票號碼：</b> #E-<?php echo $billing_details[0]['id']; ?></p>
                     <p class="cs-invoice_date cs-primary_color cs-m0"><b class="cs-primary_color">日期: </b>
                         <?php
                         $date = date_create($billing_details[0]["updated_at"]);
@@ -590,7 +590,7 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                     </p>
                 </div>
                 <div class="cs-invoice_right cs-text_right">
-                    <div class="cs-logo cs-mb5"><img src="../assets/images/logo/2.png" alt="Logo" style="width: 200px">
+                    <div class="cs-logo cs-mb5"><img src="../assets/images/logo/logo-1.png" alt="Logo" style="width: 200px">
                     </div>
                 </div>
             </div>
@@ -607,9 +607,9 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                 <div class="cs-invoice_right cs-text_right">
                     <b class="cs-primary_color">支付給:</b>
                     <p>
-                        Royal Cheese 活籽兒童用品店 <br>
-                        大圍成運路 21-23 號群力工業大廈 3 樓 1 室 <br>
-                        電話：5605 8389 / 電郵： Royal Cheese.order@gmail.com
+                        Enjoy <br>
+                        沙田京瑞廣場二期1樓159號鋪<br>
+                        電話：6190 8226
                     </p>
                 </div>
             </div>
@@ -647,12 +647,6 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                         </table>
                     </div>
                     <div class="cs-invoice_footer cs-border_top">
-                        <div class="cs-left_footer cs-mobile_hide">
-                            <p class="cs-mb0"><b class="cs-primary_color">郵寄方式:</b></p>
-                            <p class="cs-m0"><?php echo $billing_details[0]['shipping_method'];?></p>
-                            <p class="cs-mb0"><b class="cs-primary_color">付款方式:</b></p>
-                            <p class="cs-m0"><?php echo $billing_details[0]['payment_type'];?></p>
-                        </div>
                         <div class="cs-right_footer">
                             <table>
                                 <tbody>
