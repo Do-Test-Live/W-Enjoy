@@ -2106,6 +2106,76 @@ include ('cart_backend.php');
 
 <!-- thme setting js -->
 <script src="assets/js/theme-setting.js"></script>
+
+<!-- Quick View Modal Box Start -->
+<div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+        <div class="modal-content">
+            <div class="modal-header p-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-sm-4 g-2">
+                    <div class="col-lg-12">
+                        <div class="right-sidebar-modal text-center">
+                            <h4 class="title-name">
+                                呢個網站內容係為成年人而設。<br/>
+                                要睇呢啲內容，你要年滿18歲或以上。
+                            </h4>
+
+                            <div class="modal-button">
+                                <button onclick="clickOk();"
+                                        class="btn btn-md add-cart-button icon ms-auto">我已滿18歲</button>
+                                <button onclick="notOk();"
+                                        class="btn theme-bg-color view-button icon text-white fw-bold btn-md me-auto">
+                                    我未滿18歲</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Quick View Modal Box End -->
+<script>
+    // Function to check if the user has seen the modal before
+    function hasSeenModal() {
+        return localStorage.getItem('modalSeen') === 'true';
+    }
+
+    // Function to set that the user has seen the modal
+    function setModalSeen() {
+        localStorage.setItem('modalSeen', 'true');
+    }
+
+    // Function to open the modal if the user has not seen it before
+    function openModal() {
+        if (!hasSeenModal()) {
+            $('#view').modal('show');
+        }
+    }
+
+    // Function to handle the "OK" button click
+    function clickOk() {
+        setModalSeen(); // Mark the modal as seen
+        location.href = 'index.php';
+    }
+
+    // Function to handle the "NOT" button click
+    function notOk() {
+        setModalSeen(); // Mark the modal as seen
+        location.href = 'https://www.google.com/';
+    }
+
+    // Execute this function when the page loads
+    $(document).ready(function () {
+        openModal();
+    });
+</script>
 </body>
 
 </html>
