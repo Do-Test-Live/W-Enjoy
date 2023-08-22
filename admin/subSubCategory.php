@@ -74,7 +74,7 @@ if (!isset($_SESSION['userid'])) {
 
                                         <div class="form-group col-md-12">
                                             <label>Select Product Category *</label>
-                                            <select class="form-control default-select" id="sel1" name="category" required>
+                                            <select class="form-control" id="sel1" onchange="fetchSubCategory(this.value)" name="category" required>
                                                 <?php
                                                 $fetch_selected_cat = $db_handle->runQuery("select * from sub_cat as s,category as c where c.id=s.cat_id and s.id = {$data[0]["sub_cat_id"]}");
                                                 if($fetch_selected_cat){
@@ -97,21 +97,12 @@ if (!isset($_SESSION['userid'])) {
 
                                         <div class="form-group col-md-12">
                                             <label>Select Product Sub Category *</label>
-                                            <select class="form-control default-select" id="sel1" name="sub_category" required>
+                                            <select class="form-control" id="sub_category" name="sub_category" required>
                                                 <?php
                                                 $fetch_selected_cat = $db_handle->runQuery("select * from sub_cat where id = {$data[0]["sub_cat_id"]}");
                                                 if($fetch_selected_cat){
                                                     ?>
                                                     <option value="<?php echo $fetch_selected_cat[0]["id"]; ?>" selected><?php echo $fetch_selected_cat[0]["sub_cat_name"]; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
-                                                <?php
-                                                $subcat = $db_handle->runQuery("select * from category as c,sub_cat as s where c.id=s.cat_id");
-                                                $row_count = $db_handle->numRows("select * from category as c,sub_cat as s where c.id=s.cat_id");
-                                                for ($i = 0; $i < $row_count; $i++) {
-                                                    ?>
-                                                    <option value="<?php echo $subcat[$i]["id"]; ?>"><?php echo $subcat[$i]["sub_cat_name"]; ?></option>
                                                     <?php
                                                 }
                                                 ?>
@@ -251,5 +242,30 @@ if (!isset($_SESSION['userid'])) {
 <!-- Datatable -->
 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="js/plugins-init/datatables.init.js"></script>
+<script>
+    function fetchSubCategory(val) {
+        let sub_category = document.getElementById('sub_category');
+        removeOptions(sub_category);
+
+        $.ajax({
+            url: "fetchSubcategory.php",
+            type: "POST",
+            data: {
+                category_id: val
+            },
+            cache: false,
+            success: function(result){
+                $("#sub_category").html(result);
+            }
+        });
+    }
+
+    function removeOptions(selectElement) {
+        let i, L = selectElement.options.length - 1;
+        for (i = L; i >= 0; i--) {
+            selectElement.remove(i);
+        }
+    }
+</script>
 </body>
 </html>
