@@ -4,16 +4,16 @@ class DBController {
     private $user = "root";
     private $password = "";
     private $database = "enjoy";
-    private $from_email='business@rcrpetsworkshop.com';
-    private $notification_email='admin@enjoy.com';
+    private $from_email='business@enjoysexshop.com';
+    private $notification_email='admin@enjoysexshop.com';
     private $conn;
 
     function __construct() {
-        if($_SERVER['SERVER_NAME']=="www.enjoy.ngt.hk"||$_SERVER['SERVER_NAME']=="enjoy.ngt.hk"){
+        if($_SERVER['SERVER_NAME']=="www.enjoysexshop.com"||$_SERVER['SERVER_NAME']=="enjoysexshop.com"){
             $this->host = "localhost";
-            $this->user = "ucvdugdxvu2mk";
+            $this->user = "uu19zxtx4rwm0";
             $this->password = "s11j&4{1u#11";
-            $this->database = "dboxsgvavgdgn2";
+            $this->database = "db4nwyuyymp4b1";
         }
 
         $this->conn = $this->connectDB();
