@@ -67,7 +67,7 @@ if (!isset($_SESSION['userid'])) {
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Select Product Category *</label>
-                                            <select class="form-control default-select" id="productCategory" name="product_category" required>
+                                            <select class="form-control" id="productCategory" onchange="fetchSubCategory(this.value)" name="product_category" required>
                                                 <?php
                                                 $cat = $db_handle->runQuery("SELECT * FROM `category`");
                                                 $row_count = $db_handle->numRows("SELECT * FROM `category`");
@@ -81,17 +81,14 @@ if (!isset($_SESSION['userid'])) {
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Select Product Sub Category *</label>
-                                            <select class="form-control default-select" id="productSubCategory" name="product_subcategory">
-                                                <option selected>No Sub Category</option>
-                                                <?php
-                                                $fetch_sub_cat = $db_handle->runQuery("select * from sub_cat order by id desc");
-                                                $no_fetch_sub_cat = $db_handle->numRows("select * from sub_cat order by id desc");
-                                                for($i=0; $i < $no_fetch_sub_cat; $i++){
-                                                    ?>
-                                                    <option value="<?php echo $fetch_sub_cat[$i]["id"]; ?>"><?php echo $fetch_sub_cat[$i]["sub_cat_name"]; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
+                                            <select class="form-control" id="sub_category" onchange="fetchSubSubCategory(this.value)"  name="product_subcategory">
+                                                <option selected>Select Category First</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Select Product Sub Sub-Category *</label>
+                                            <select class="form-control" id="productSubSubCategory" name="product_sub_sub_category">
+                                                <option selected>Select Sub Category First</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12">
@@ -153,33 +150,48 @@ if (!isset($_SESSION['userid'])) {
 
 
 
-<!--<script>
-        $(document).ready(function() {
-        $('#productCategory').change(function() {
-            console.log('onchange working');
-            let categoryId = $(this).val();
+<script>
+    function fetchSubCategory(val) {
+        let sub_category = document.getElementById('sub_category');
+        removeOptions(sub_category);
 
-            // Perform AJAX request
-            $.ajax({
-                url: 'fetch_subcat.php',
-                type: 'POST',
-                data: { categoryId: categoryId },
-                success: function(response) {
-                    // Clear existing options
-                    $('#productSubCategory').empty();
-
-                    // Append new options
-                    $.each(response, function(index, subCategory) {
-                        $('#productSubCategory').append($('<option>', {
-                            value: subCategory.id,
-                            text: subCategory.sub_cat_name
-                        }));
-                    });
-                }
-            });
+        $.ajax({
+            url: "fetchSubcategory.php",
+            type: "POST",
+            data: {
+                category_id: val
+            },
+            cache: false,
+            success: function(result){
+                $("#sub_category").html(result);
+            }
         });
-    });
-</script>-->
+    }
+
+    function removeOptions(selectElement) {
+        let i, L = selectElement.options.length - 1;
+        for (i = L; i >= 0; i--) {
+            selectElement.remove(i);
+        }
+    }
+
+    function fetchSubSubCategory(val) {
+        let sub_sub_category = document.getElementById('productSubSubCategory');
+        removeOptions(sub_sub_category);
+
+        $.ajax({
+            url: "fetchSubSubcategory.php",
+            type: "POST",
+            data: {
+                sub_category_id: val
+            },
+            cache: false,
+            success: function(result){
+                $("#productSubSubCategory").html(result);
+            }
+        });
+    }
+</script>
 
 <script>
     CKEDITOR.replace('product_description');

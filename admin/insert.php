@@ -22,6 +22,7 @@ if (isset($_POST["add_product"])) {
     $product_code = $db_handle->checkValue($_POST['product_code']);
     $product_category = $db_handle->checkValue($_POST['product_category']);
     $product_subcategory = $db_handle->checkValue($_POST['product_subcategory']);
+    $product_sub_sub_category = $db_handle->checkValue($_POST['product_sub_sub_category']);
     $selling_price = $db_handle->checkValue($_POST['selling_price']);
     $product_status = $db_handle->checkValue($_POST['product_status']);
     $product_description = $db_handle->checkValue($_POST['product_description']);
@@ -80,8 +81,8 @@ if (isset($_POST["add_product"])) {
     }
 
     echo $product_subcategory;
-    $insert = $db_handle->insertQuery("INSERT INTO `product` (`category_id`, `product_code`, `p_name`,`product_price`, `description`, `p_image`,`status`, `inserted_at`,`subcat_id`) VALUES 
-                ('$product_category','$product_code','$product_name','$selling_price','$product_description','$products_image','$product_status','$inserted_at','$product_subcategory')");
+    $insert = $db_handle->insertQuery("INSERT INTO `product` (`category_id`, `product_code`, `p_name`,`product_price`, `description`, `p_image`,`status`, `inserted_at`,`subcat_id`,`sub_sub_cat_id`) VALUES 
+                ('$product_category','$product_code','$product_name','$selling_price','$product_description','$products_image','$product_status','$inserted_at','$product_subcategory','$product_sub_sub_category')");
     if ($insert) {
         echo "<script>
                 document.cookie = 'alert = 3;';
@@ -245,6 +246,21 @@ if (isset($_POST['add_sub_cat'])) {
         echo "<script>
                 document.cookie = 'alert = 3;';
                 window.location.href='Add-Subcategory';
+                </script>";
+    }
+}
+
+if (isset($_POST['add_sub_sub_cat'])) {
+    $sub_sub_cat_name = $db_handle->checkValue($_POST['sub_sub_cat_name']);
+    $sub_category = $db_handle->checkValue($_POST['sub_category']);
+    $inserted_at = date("Y-m-d H:i:s");
+
+    $insert_sub_sub_cat = $db_handle->insertQuery("INSERT INTO `sub_sub_cat`(`sub_cat_id`, `sub_sub_name_cn`,  `inserted_at`) VALUES ('$sub_category','$sub_sub_cat_name','$inserted_at')");
+
+    if ($insert_sub_sub_cat) {
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Add-Sub-Subcategory';
                 </script>";
     }
 }

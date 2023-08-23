@@ -24,6 +24,10 @@ RewriteRule ^Add-Subcategory addSubcat.php [NE,L]
 
 RewriteRule ^Subcategory subcategory.php [NE,L]
 
+RewriteRule ^Add-Sub-Subcategory addSubSubcat.php [NE,L]
+
+RewriteRule ^Sub-Subcategory subSubCategory.php [NE,L]
+
 RewriteRule ^Add-Store addStore.php [NE,L]
 
 RewriteRule ^Store store.php [NE,L]

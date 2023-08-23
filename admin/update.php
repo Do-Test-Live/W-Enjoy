@@ -32,6 +32,8 @@ if (isset($_POST['updateProduct'])) {
     $product_code = $db_handle->checkValue($_POST['p_code']);
     $product_description = $db_handle->checkValue($_POST['product_description']);
     $product_category = $db_handle->checkValue($_POST['product_category']);
+    $product_subcategory = $db_handle->checkValue($_POST['product_subcategory']);
+    $product_sub_sub_category = $db_handle->checkValue($_POST['product_sub_sub_category']);
     $status = $db_handle->checkValue($_POST['status']);
     $product_price = $db_handle->checkValue($_POST['product_price']);
     $query = '';
@@ -90,7 +92,7 @@ if (isset($_POST['updateProduct'])) {
         }
     }
 
-    $data = $db_handle->insertQuery("UPDATE `product` SET `category_id`='$product_category',`product_code`='$product_code',`p_name`='$p_name',`description`='$product_description',
+    $data = $db_handle->insertQuery("UPDATE `product` SET `category_id`='$product_category',`subcat_id`='$product_subcategory',`sub_sub_cat_id`='$product_sub_sub_category',`product_code`='$product_code',`p_name`='$p_name',`description`='$product_description',
                      `status`='$status',`updated_at`='$updated_at',`product_price`='$product_price'" . $query . " WHERE id={$id}");
     if($data){
         echo "<script>
@@ -342,7 +344,22 @@ if (isset($_POST['updateSubCategory'])) {
     if ($update_subcat) {
         echo "<script>
                 document.cookie = 'alert = 3;';
-                window.location.href='Add-Subcategory';
+                window.location.href='Subcategory';
+                </script>";
+    }
+}
+
+if (isset($_POST['updateSubSubCategory'])) {
+    $id = $db_handle->checkValue($_POST['id']);
+    $sub_sub_cat_name = $db_handle->checkValue($_POST['sub_sub_cat_name']);
+    $sub_category = $db_handle->checkValue($_POST['sub_category']);
+    $updated_at = date("Y-m-d H:i:s");
+
+    $update_subcat = $db_handle->insertQuery("UPDATE `sub_sub_cat` SET `sub_cat_id`='$sub_category',`sub_sub_name_cn`='$sub_sub_cat_name',`updated_at`='$updated_at' WHERE id='$id'");
+    if ($update_subcat) {
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Sub-Subcategory';
                 </script>";
     }
 }

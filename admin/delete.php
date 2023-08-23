@@ -52,3 +52,8 @@ if(isset($_GET['subcatId'])){
     echo 'success';
 }
 
+if(isset($_GET['subsubcatId'])){
+    $db_handle->insertQuery("delete from sub_sub_cat where id = " . $_GET['subsubcatId'] . "");
+    echo 'success';
+}
+

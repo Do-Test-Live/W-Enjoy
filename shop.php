@@ -6,7 +6,7 @@ if (isset($_SESSION['id'])) {
 include('admin/include/dbController.php');
 $db_handle = new DBController();
 
-include ('cart_backend.php');
+include('cart_backend.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +69,7 @@ include ('cart_backend.php');
     <span></span>
 </div>-->
 <!-- Header Start -->
-<?php include ('include/header.php');?>
+<?php include('include/header.php'); ?>
 <!-- Header End -->
 
 
@@ -131,7 +131,7 @@ include ('cart_backend.php');
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading<?php echo $fetch_cat[$i]['id']; ?>">
                                         <?php
-                                        if($no_fetch_sub_cat > 0){
+                                        if ($no_fetch_sub_cat > 0) {
                                             ?>
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                                     data-bs-target="#collapse<?php echo $fetch_cat[$i]['id']; ?>"
@@ -140,7 +140,8 @@ include ('cart_backend.php');
                                             <?php
                                         }
                                         ?>
-                                            <a href="shop.php?catId=<?php echo $fetch_cat[$i]['id']; ?>" style="font-size: 20px;color: #222;text-decoration: none;"><?php echo $fetch_cat[$i]['c_name']; ?></a>
+                                        <a href="shop.php?catId=<?php echo $fetch_cat[$i]['id']; ?>"
+                                           style="font-size: 20px;color: #222;text-decoration: none;"><?php echo $fetch_cat[$i]['c_name']; ?></a>
                                     </h2>
                                     <div id="collapse<?php echo $fetch_cat[$i]['id']; ?>"
                                          class="accordion-collapse collapse show"
@@ -148,9 +149,33 @@ include ('cart_backend.php');
                                         <div class="accordion-body">
                                             <?php
                                             for ($j = 0; $j < $no_fetch_sub_cat; $j++) {
+
+                                                $sub_cat_id = $fetch_sub_cat[$j]['id'];
+                                                $fetch_sub_sub_cat = $db_handle->runQuery("select * from sub_sub_cat where sub_cat_id = '$sub_cat_id'");
+                                                $no_fetch_sub_sub_cat = $db_handle->numRows("select * from sub_sub_cat where sub_cat_id = '$sub_cat_id'");
                                                 ?>
                                                 <ul class="category-list custom-padding custom-height">
-                                                    <li><a href="shop.php?subcat=<?php echo $fetch_sub_cat[$j]['id'];?>"><?php echo $fetch_sub_cat[$j]['sub_cat_name'];?></a></li>
+                                                    <li>
+                                                        <a href="shop.php?subcat=<?php echo $fetch_sub_cat[$j]['id']; ?>">
+                                                            <?php echo $fetch_sub_cat[$j]['sub_cat_name']; ?>
+                                                        </a>
+
+                                                        <?php
+                                                        for ($k = 0; $k < $no_fetch_sub_sub_cat; $k++) {
+                                                            ?>
+                                                            <ul class="category-list custom-padding custom-height">
+                                                                <li>
+                                                                    <a href="shop.php?sub_sub_cat=<?php echo $fetch_sub_sub_cat[$k]['id']; ?>">
+                                                                        <?php echo $fetch_sub_sub_cat[$k]['sub_sub_name_cn']; ?>
+                                                                    </a>
+
+                                                                </li>
+                                                            </ul>
+                                                            <?php
+                                                        }
+                                                        ?>
+
+                                                    </li>
                                                 </ul>
                                                 <?php
                                             }
@@ -327,7 +352,7 @@ include ('cart_backend.php');
                     </nav>
                 </div>
                 <?php
-            }elseif (isset($_GET['subcat'])) {
+            } elseif (isset($_GET['subcat'])) {
                 $id = $_GET['subcat'];
                 $fetch_sub_cat_name = $db_handle->runQuery("select * from sub_cat where id = '$id'");
                 $sub_cat_name = $fetch_sub_cat_name[0]['sub_cat_name'];
@@ -468,8 +493,148 @@ include ('cart_backend.php');
                     </nav>
                 </div>
                 <?php
-            }
-            else {
+            } elseif (isset($_GET['sub_sub_cat'])) {
+                $id = $_GET['sub_sub_cat'];
+                $fetch_sub_cat_name = $db_handle->runQuery("select * from sub_sub_cat where id = '$id'");
+                $sub_cat_name = $fetch_sub_cat_name[0]['sub_sub_name_cn'];
+                ?>
+                <div class="col-custome-9">
+                    <h2><?php echo $sub_cat_name; ?>
+                    </h2>
+                    <div class="row g-sm-4 g-3 row-cols-xxl-4 mt-3 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
+                        <?php
+                        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                        // calculate the offset for the SQL query
+                        $offset = ($current_page - 1) * 8;
+                        $fetch_subcat_products = $db_handle->runQuery("SELECT * FROM sub_sub_cat,`product` WHERE product.status = '1' and product.sub_sub_cat_id = sub_sub_cat.id and product.subcat_id = '$id' limit 8 OFFSET $offset");
+                        $no_fetch_subcat_products = $db_handle->numRows(" SELECT * FROM sub_sub_cat,`product` WHERE product.status = '1' and product.sub_sub_cat_id = sub_sub_cat.id and product.subcat_id = '$id' limit 8 OFFSET $offset");
+                        for ($i = 0; $i < $no_fetch_subcat_products; $i++) {
+                            ?>
+                            <div class="search_content">
+                                <div class="product-box-3 h-100 wow fadeInUp">
+                                    <div class="product-header">
+                                        <div class="product-image">
+                                            <a href="product_details.php?product_id=<?php echo $fetch_subcat_products[$i]['id']; ?>">
+                                                <img src="admin/<?php
+                                                echo str_replace("650", "250", strtok($fetch_subcat_products [$i]['p_image'], ','));
+                                                ?>"
+                                                     class="img-fluid blur-up lazyload" alt="">
+                                            </a>
+
+                                            <ul class="product-option">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                                    <a href="product_details.php?product_id=<?php echo $fetch_subcat_products[$i]['id']; ?>">
+                                                        <i data-feather="eye"></i>
+                                                    </a>
+                                                </li>
+
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                                    <a href="#"
+                                                       class="notifi-wishlist">
+                                                        <i data-feather="heart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-detail">
+                                            <span class="span-name"><?php echo $fetch_subcat_products[$i]['sub_sub_name_cn']; ?></span>
+                                            <a href="product_details.php?product_id=<?php echo $fetch_subcat_products[$i]['id']; ?>">
+                                                <h5 class="name"><?php echo $fetch_subcat_products[$i]['p_name']; ?></h5>
+                                            </a>
+                                            <h5 class="price"><span
+                                                        class="theme-color">
+                                                     HK$<?php echo $fetch_subcat_products [$i]['product_price'] ?>
+                                                        </span>
+                                            </h5>
+                                            <div class="add-to-cart-box bg-white">
+                                                <a href="product_details.php?product_id=<?php echo $fetch_subcat_products[$i]['id']; ?>"
+                                                   class="btn btn-add-cart addcart-button"><?php echo '查看詳情'; ?>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                    </div>
+
+                    <nav class="custome-pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="shop.php?subcat=<?php echo $id; ?>&page=1" tabindex="-1"
+                                   aria-disabled="true">
+                                    <i class="fa-solid fa-angles-left"></i>
+                                </a>
+                            </li>
+                            <?php
+                            if (isset($_GET['page']) && $_GET['page'] > 1) {
+                                $c_page = $_GET['page'];
+                                $n_page = $c_page - 1;
+                                ?>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="shop.php?subcat=<?php echo $id; ?>&page=<?php echo $n_page; ?>"
+                                       tabindex="-1" aria-disabled="true">
+                                        Previous
+                                    </a>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                            <?php
+                            // calculate the total number of pages
+                            $new = $db_handle->runQuery("SELECT COUNT(id) as c FROM `product` WHERE subcat_id = '$id'");
+                            $no_new = $db_handle->numRows("SELECT COUNT(id) as c FROM `product` WHERE subcat_id = '$id'");
+
+                            $total_pages = ceil($new[0]['c'] / 8);
+                            if (isset($_GET['page'])) {
+                                $page = $_GET['page'];
+                            } else {
+                                $page = 1;
+                            }
+                            for ($i = $page; $i <= $total_pages; $i++) {
+                                if ($i == $page + 5) {
+                                    echo "......";
+                                    $i = $total_pages;
+                                }
+
+                                ?>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="shop.php?subcat=<?php echo $id; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                </li>
+                                <?php
+                            }
+                            if (!isset($_GET['page']) || $_GET['page'] < $i - 1) {
+                                if (!isset($_GET['page']))
+                                    $n_page = 2;
+                                else
+                                    $n_page = $_GET['page'] + 1;
+                                ?>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="shop.php?subcat=<?php echo $id; ?>&page=<?php echo $n_page; ?>">
+                                        Next
+                                    </a>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="shop.php?subcat=<?php echo $id; ?>&page=<?php echo $i - 1; ?>">
+                                    <i class="fa-solid fa-angles-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <?php
+            } else {
                 ?>
                 <div class="col-custome-9">
 
@@ -610,7 +775,7 @@ include ('cart_backend.php');
 <!-- Shop Section End -->
 
 <!-- Footer Section Start -->
-<?php include ('include/footer.php');?>
+<?php include('include/footer.php'); ?>
 <!-- Footer Section End -->
 
 

@@ -36,15 +36,15 @@ if (isset($_POST['verify'])) {
         $_SESSION['vcode'] = $verification_code;
         $email_to = $email;
         $mail->isSMTP();
-        $mail->Host = 'mail.ngt.hk';  // Specify your SMTP server
+        $mail->Host = 'sgp80.siteground.asia';  // Specify your SMTP server
         $mail->SMTPAuth = true;
-        $mail->Username = 'enjoy@ngt.hk';
-        $mail->Password = ',xb%#|4o35~';
+        $mail->Username = 'business@enjoysexshop.com';
+        $mail->Password = 'rD1y1r%c|(32';
         $mail->Port = 465;  // Specify the SMTP port
         $mail->SMTPSecure = 'ssl';  // Enable encryption, 'ssl' also possible
 
         // Email content
-        $mail->setFrom('enjoy@ngt.hk', 'Enjoy');
+        $mail->setFrom('business@enjoysexshop.com', 'Enjoy');
         $mail->addAddress($email_to);  // Add recipient email
         $mail->Subject = 'Verify your email.';
         $mail->isHTML(true);
@@ -65,9 +65,9 @@ if (isset($_POST['verify'])) {
         // Send the email
         if ($mail->send()) {
             echo "<script>
-alert('An email with verification code has sent to your email');
-window.location.href = 'verify_email.php?email=$email';
-</script>";
+                    alert('An email with verification code has sent to your email');
+                    window.location.href = 'verify_email.php?email=$email';
+                    </script>";
             exit;
         } else {
             echo "Something went wrong: " . $mail->ErrorInfo;
