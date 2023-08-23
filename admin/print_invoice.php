@@ -673,7 +673,7 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                         <table>
                             <tbody>
                             <tr class="cs-border_none">
-                                <td class="cs-width_3 cs-border_top_0 cs-bold cs-f16 cs-primary_color">全部的</td>
+                                <td class="cs-width_3 cs-border_top_0 cs-bold cs-f16 cs-primary_color">總數</td>
                                 <td class="cs-width_3 cs-border_top_0 cs-bold cs-f16 cs-primary_color cs-text_right">
                                     <?php echo $billing_details[0]['total_purchase'] + $billing_details[0]['delivery_charges'] ;?> HKD
                                 </td>
