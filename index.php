@@ -2,10 +2,10 @@
 session_start();
 include('admin/include/dbController.php');
 $db_handle = new DBController();
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     $customer_id = $_SESSION['id'];
 }
-include ('cart_backend.php');
+include('cart_backend.php');
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +72,7 @@ include ('cart_backend.php');
 <!-- Loader End -->
 
 <!-- Header Start -->
-<?php include ('include/header.php');?>
+<?php include('include/header.php'); ?>
 <!-- Header End -->
 
 
@@ -95,7 +95,7 @@ include ('cart_backend.php');
                                         <button
                                                 class="btn theme-bg-color btn-md text-white fw-bold mt-md-4 mt-2 mend-auto"
                                                 onclick="location.href = 'shop-left-sidebar.html';">立即購買 <i
-                                                class="fa-solid fa-arrow-right icon"></i></button>
+                                                    class="fa-solid fa-arrow-right icon"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@ include ('cart_backend.php');
     <div class="container-fluid-lg">
         <div class="row">
             <div class="col-12">
-                    <img src="assets/images/furniture/banner/1.png" class="img-fluid" alt="">
+                <img src="assets/images/furniture/banner/1.png" class="img-fluid" alt="">
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@ include ('cart_backend.php');
     <div class="container-fluid-lg">
         <div class="row">
             <div class="col-12">
-                    <img src="assets/images/furniture/banner/2.png" class="img-fluid" alt="">
+                <img src="assets/images/furniture/banner/2.png" class="img-fluid" alt="">
             </div>
         </div>
     </div>
@@ -136,7 +136,7 @@ include ('cart_backend.php');
     <div class="container-fluid-lg">
         <div class="row">
             <div class="col-12">
-                    <img src="assets/images/furniture/banner/3.png" class="img-fluid" alt="">
+                <img src="assets/images/furniture/banner/3.png" class="img-fluid" alt="">
             </div>
         </div>
     </div>
@@ -147,7 +147,7 @@ include ('cart_backend.php');
     <div class="container-fluid-lg">
         <div class="row">
             <div class="col-12">
-                    <img src="assets/images/furniture/banner/4.png" class="img-fluid" alt="">
+                <img src="assets/images/furniture/banner/4.png" class="img-fluid" alt="">
             </div>
         </div>
     </div>
@@ -158,7 +158,7 @@ include ('cart_backend.php');
     <div class="container-fluid-lg">
         <div class="row">
             <div class="col-12">
-                    <img src="assets/images/furniture/banner/5.png" class="img-fluid" alt="">
+                <img src="assets/images/furniture/banner/5.png" class="img-fluid" alt="">
             </div>
         </div>
     </div>
@@ -2047,7 +2047,7 @@ include ('cart_backend.php');
 
 
 <!-- Footer Section Start -->
-<?php include ('include/footer.php');?>
+<?php include('include/footer.php'); ?>
 <!-- Footer Section End -->
 
 
@@ -2112,11 +2112,6 @@ include ('cart_backend.php');
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
         <div class="modal-content">
-            <div class="modal-header p-0">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
             <div class="modal-body">
                 <div class="row g-sm-4 g-2">
                     <div class="col-lg-12">
@@ -2128,10 +2123,12 @@ include ('cart_backend.php');
 
                             <div class="modal-button">
                                 <button onclick="clickOk();"
-                                        class="btn btn-md add-cart-button icon ms-auto">我已滿18歲</button>
+                                        class="btn btn-md add-cart-button icon ms-auto">我已滿18歲
+                                </button>
                                 <button onclick="notOk();"
                                         class="btn theme-bg-color view-button icon text-white fw-bold btn-md me-auto">
-                                    我未滿18歲</button>
+                                    我未滿18歲
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -2142,32 +2139,27 @@ include ('cart_backend.php');
 </div>
 <!-- Quick View Modal Box End -->
 <script>
-    // Function to check if the user has seen the modal before
-    function hasSeenModal() {
-        return localStorage.getItem('modalSeen') === 'true';
-    }
 
-    // Function to set that the user has seen the modal
-    function setModalSeen() {
-        localStorage.setItem('modalSeen', 'true');
-    }
 
     // Function to open the modal if the user has not seen it before
     function openModal() {
-        if (!hasSeenModal()) {
-            $('#view').modal('show');
-        }
+        $('#view').modal('show');
+
+
+        $('#view').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+
     }
 
     // Function to handle the "OK" button click
     function clickOk() {
-        setModalSeen(); // Mark the modal as seen
-        location.href = 'index.php';
+        $('#view').modal('hide');
     }
 
     // Function to handle the "NOT" button click
     function notOk() {
-        setModalSeen(); // Mark the modal as seen
         location.href = 'https://www.google.com/';
     }
 
