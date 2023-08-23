@@ -684,6 +684,11 @@ $billing_details = $db_handle->runQuery("SELECT * FROM `billing_details` WHERE i
                 </div>
             </div>
         </div>
+        <div class="cs-invoice_footer" style="align-items: center; justify-content: center;">
+            <img src="../assets/images/qr/1.jpeg" alt="" style="padding-right: 25px;">
+            <img src="../assets/images/qr/2.jpeg" alt="" style="padding-right: 25px;">
+            <img src="../assets/images/qr/3.jpeg" alt="">
+        </div>
         <div class="cs-invoice_btns cs-hide_print">
             <a href="javascript:window.print()" class="cs-invoice_btn cs-color1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
