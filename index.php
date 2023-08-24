@@ -92,9 +92,8 @@ include('cart_backend.php');
                                         <h5 class="ls-expanded banerfontcolor text-uppercase">特別優惠</h5>
                                         <h1 class="heding-2 banerfontcolor">選購你的心水玩具!</h1>
                                         <h2 class="content-2 banerfontcolor">輕鬆下單</h2>
-                                        <button
-                                                class="btn theme-bg-color btn-md text-white fw-bold mt-md-4 mt-2 mend-auto"
-                                                onclick="location.href = 'shop-left-sidebar.html';">立即購買 <i
+                                        <button class="btn theme-bg-color btn-md text-white fw-bold mt-md-4 mt-2 mend-auto"
+                                                onclick="location.href = 'shop.php';">立即購買 <i
                                                     class="fa-solid fa-arrow-right icon"></i></button>
                                     </div>
                                 </div>
@@ -2139,23 +2138,24 @@ include('cart_backend.php');
 </div>
 <!-- Quick View Modal Box End -->
 <script>
-
+    // Check if the modal has been shown before
+    var modalShown = localStorage.getItem('modalShown');
 
     // Function to open the modal if the user has not seen it before
     function openModal() {
-        $('#view').modal('show');
-
-
         $('#view').modal({
             backdrop: 'static',
             keyboard: false
         });
 
+        $('#view').modal('show');
     }
 
     // Function to handle the "OK" button click
     function clickOk() {
         $('#view').modal('hide');
+        // Set a flag in local storage to indicate that the modal has been shown
+        localStorage.setItem('modalShown', true);
     }
 
     // Function to handle the "NOT" button click
@@ -2165,9 +2165,13 @@ include('cart_backend.php');
 
     // Execute this function when the page loads
     $(document).ready(function () {
-        openModal();
+        // Only open the modal if it hasn't been shown before
+        if (!modalShown) {
+            openModal();
+        }
     });
 </script>
+
 </body>
 
 </html>

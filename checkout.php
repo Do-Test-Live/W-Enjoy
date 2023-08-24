@@ -231,12 +231,29 @@ include ('cart_backend.php');
                                     <h4><?php echo '小計';?></h4>
                                     <h4 class="price"><?php echo "HKD " . number_format($total_price_new, 2); ?></h4>
                                 </li>
+                                <li>
+                                    <h4>折扣</h4>
+                                    <h4 class="price">
+                                        <?php
+                                        $discount=0;
+                                        if(isset($_GET['points'])){
+                                            $discount=(int)$_GET['points'];
+
+                                            if($total_price_new <= $discount){
+                                                $discount=$total_price_new;
+                                            }
+                                        }
+                                            echo "HKD " . $discount;
+                                        ?>
+                                    </h4>
+                                </li>
                                 <li class="list-total">
                                     <h4><?php echo '全部的 (HKD)';?></h4>
-                                    <h4 class="price"><?php echo "HKD " . number_format($total_price_new, 2); ?></h4>
+                                    <h4 class="price"><?php echo "HKD " . number_format($total_price_new - $discount, 2); ?></h4>
                                 </li>
                             </ul>
-                            <input type="hidden" name="total_value" value="<?php echo $total_price_new; ?>">
+                            <input type="hidden" name="total_value" value="<?php echo $total_price_new - $discount; ?>">
+                            <input type="hidden" name="discount" value="<?php echo $discount; ?>">
                         </div>
                         <button class="btn theme-bg-color text-white btn-md w-100 mt-4 fw-bold" name="placeOrder" type="submit">
                             <?php echo '下訂單';?></button>
