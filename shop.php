@@ -156,16 +156,16 @@ include('cart_backend.php');
                                                 ?>
                                                 <ul class="category-list custom-padding custom-height">
                                                     <li>
-                                                        <a href="shop.php?subcat=<?php echo $fetch_sub_cat[$j]['id']; ?>">
+                                                        <a href="shop.php?subcat=<?php echo $fetch_sub_cat[$j]['id']; ?>" style="color: #ff1494">
                                                             <?php echo $fetch_sub_cat[$j]['sub_cat_name']; ?>
                                                         </a>
 
                                                         <?php
                                                         for ($k = 0; $k < $no_fetch_sub_sub_cat; $k++) {
                                                             ?>
-                                                            <ul class="category-list custom-padding custom-height">
+                                                            <ul style="padding-left: 10px;">
                                                                 <li>
-                                                                    <a href="shop.php?sub_sub_cat=<?php echo $fetch_sub_sub_cat[$k]['id']; ?>">
+                                                                    <a href="shop.php?sub_sub_cat=<?php echo $fetch_sub_sub_cat[$k]['id']; ?>" style="color: #ff69b3;">
                                                                         <?php echo $fetch_sub_sub_cat[$k]['sub_sub_name_cn']; ?>
                                                                     </a>
 
