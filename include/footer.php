@@ -41,7 +41,7 @@
 
                 <div class="col-xxl-4 col-xl-6 col-sm-6" style="padding-top: 35px;">
                     <div class="footer-title pt-3">
-                        <h4 class="text-white">Store infomation</h4>
+                        <h4 class="text-white">聯絡我們</h4>
                     </div>
                     <ul class="footer-address footer-contact">
                         <li>
@@ -62,13 +62,27 @@
                             </a>
                         </li>
                     </ul>
+                    <div class="row mt-5">
+                        <div class="footer-title">
+                            <h4 class="text-white">付款方式</h4>
+                        </div>
+                        <div class="col-4">
+                            <img src="assets/images/qr/1.jpeg" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-4">
+                            <img src="assets/images/qr/2.jpeg" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-4">
+                            <img src="assets/images/qr/3.jpeg" alt="" class="img-fluid">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="sub-footer sub-footer-lite section-b-space section-t-space">
             <div class="left-footer">
-                <p class="light-text">2023 Copyright By enjoy Powered By NGT</p>
+                <p class="light-text">2023 Copyright By enjoy Powered By <a href="https://ngt-tech.io/" target="_blank" style="color: #ffffff;">NGT Tech</a></p>
             </div>
 
             <ul class="payment-box">
