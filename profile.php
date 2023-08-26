@@ -121,6 +121,14 @@ include('include/header.php');
 <section class="log-in-section background-image-2 section-b-space">
     <div class="container-fluid-lg w-100">
         <div class="row">
+            <div class="col-12 text-center mb-3">
+                <h2>Your Points:
+                <?php
+                $fetch_point = $db_handle->runQuery("select * from point where customer_id = '$customer_id'");
+                echo $fetch_point[0]['points'];
+                ?>
+                </h2>
+            </div>
             <div class="col-xxl-12 col-xl-12 col-lg-12 d-lg-block d-none ms-auto">
                 <div class="row">
                     <div class="col-12">

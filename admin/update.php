@@ -364,3 +364,16 @@ if (isset($_POST['updateSubSubCategory'])) {
     }
 }
 
+if(isset($_POST['updatePoint'])){
+    $id = $db_handle->checkValue($_POST['id']);
+    $point = $db_handle->checkValue($_POST['point']);
+
+    $update = $db_handle->insertQuery("UPDATE `point` SET `points`='$point' WHERE `point_id` = '$id'");
+    if($update){
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Points';
+                </script>";
+    }
+}
+

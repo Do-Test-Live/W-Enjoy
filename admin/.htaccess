@@ -74,3 +74,5 @@ RewriteRule ^Delivery-Charges delivery_charges.php [NE,L]
 
 RewriteRule ^Order-Details order_details.php [NE,L]
 
+RewriteRule ^Points points.php [NE,L]
+
