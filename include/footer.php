@@ -57,7 +57,7 @@
                             <a href="javascript:void(0)" class="light-text">
                                 <div class="inform-box">
                                     <i data-feather="phone"></i>
-                                    <p>電話: 6190 8226</p>
+                                    <p>電話/Whatsapp: 6190 8226</p>
                                 </div>
                             </a>
                         </li>
@@ -66,6 +66,11 @@
                         <div class="footer-title">
                             <h4 class="text-white">付款方式</h4>
                         </div>
+                        <div class="footer-title">
+                            <h4 class="text-white">轉數快 / PAYME / 支付寶 付款，請直接whatsapp下單。轉帳後請將轉帳截圖或入數紙截圖發送給我們。</h4>
+                        </div>
+
+
                         <div class="col-4">
                             <img src="assets/images/qr/1.jpeg" alt="" class="img-fluid">
                         </div>
