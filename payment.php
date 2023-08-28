@@ -112,18 +112,10 @@ if (isset($_POST["placeOrder"])) {
     $id = $data[0]['id'];
 
     if (isset($_SESSION) && $insert_user) {
-        session_unset();
-        session_destroy();
-
-        session_start();
+        require_once 'config.php';
         $_SESSION['user_id'] = $id;
 
-        // Include configuration file
-        require_once 'config.php';
-
     } else if ($insert_user) {
-
-        // Include configuration file
         require_once 'config.php';
         $_SESSION['user_id'] = $id;
 

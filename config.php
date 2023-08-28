@@ -14,8 +14,8 @@ $currency = "hkd";
  */
 define('STRIPE_API_KEY', 'sk_test_51NfHNYJNLfAYo4EuUD0ars7qIkvLDLmQtbv852XUBJRYu8XZyuW6VqT77bbJFarLu8V1k1CPOxcnJ0DUmdMcW5UB00xZXKVhK2');
 define('STRIPE_PUBLISHABLE_KEY', 'pk_test_51NfHNYJNLfAYo4EuQ68jCsooFIyQdR8lnl1OiiW2tDkbb3RimgrDem2Xi8OoDpbeF3HF7FuahpKPi2qowBykfX89001ryatLws');
-define('STRIPE_SUCCESS_URL', 'https://localhost/Enjoy/payment-success.php'); //Payment success URL
-define('STRIPE_CANCEL_URL', 'https://localhost/Enjoy/payment-cancel.php'); //Payment cancel URL
+define('STRIPE_SUCCESS_URL', 'http://localhost/W-Enjoy/payment-success.php'); //Payment success URL
+define('STRIPE_CANCEL_URL', 'http://localhost/W-Enjoy/payment-cancel.php'); //Payment cancel URL
 
 // Database configuration
 define('DB_HOST', 'localhost');
