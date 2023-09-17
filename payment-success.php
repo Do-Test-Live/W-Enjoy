@@ -121,11 +121,15 @@ if (!empty($_GET['session_id'])) {
 
 <?php if ($statusMsg=="Your Payment has been Successful!") {
 
+    $fetch_last_order = $db_handle->runQuery("select * from billing_details order by id desc limit 1");
+    $billing_id = $fetch_last_order[0]['id'];
+    $update_status = $db_handle->insertQuery("update billing_details set payment_status = '1' where id = '$billing_id'");
+
     $email_to = $customer_email;
     $subject = 'Enjoy';
 
 
-    $headers = "From: Enjoy <" . $db_handle->from_email() . ">\r\n";
+    $headers = "From: Enjoy Sex Shop <" . $db_handle->from_email() . ">\r\n";
     $headers .= "Content-Type: text/html; charset=utf-8\r\n";
 
     $messege = "
@@ -145,7 +149,7 @@ if (!empty($_GET['session_id'])) {
         $subject = 'Enjoy';
 
 
-        $headers = "From: Royal Cheese <" . $db_handle->from_email() . ">\r\n";
+        $headers = "From: Enjoy Sex Shop <" . $db_handle->from_email() . ">\r\n";
         $headers .= "Content-Type: text/html; charset=utf-8\r\n";
 
         $messege = "
