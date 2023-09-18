@@ -2,6 +2,7 @@
 session_start();
 require_once("admin/include/dbController.php");
 $db_handle = new DBController();
+date_default_timezone_set("Asia/Hong_Kong");
 // Include configuration file
 require_once 'config.php';
 
@@ -123,6 +124,23 @@ if (!empty($_GET['session_id'])) {
 
     $fetch_last_order = $db_handle->runQuery("select * from billing_details order by id desc limit 1");
     $billing_id = $fetch_last_order[0]['id'];
+    $customer_id = $fetch_last_order[0]['customer_id'];
+    $total_purchase = $fetch_last_order[0]['total_purchase'];
+    $discount = $fetch_last_order[0]['discount'];
+    $updated_at = date("Y-m-d H:i:s");
+    if($customer_id != 0){
+        $check_avail = $db_handle->runQuery("select * from point where customer_id = '$customer_id'");
+        $no_check_avail = $db_handle->numRows("select * from point where customer_id = '$customer_id'");
+        if($no_check_avail == 1){
+            $points = $check_avail[0]['points'];
+            $new_point = ($total_purchase * 0.1) + $points - $discount;
+            $update_point = $db_handle->insertQuery("UPDATE `point` SET `points`='$new_point',`date`='$updated_at' WHERE customer_id = '$customer_id'");
+        } else{
+            $new_point = ($total_purchase * 0.1);
+            $insert_point = $db_handle->insertQuery("INSERT INTO `point`(`customer_id`, `points`, `date`) VALUES ('$customer_id','$new_point','$updated_at')");
+        }
+
+    }
     $update_status = $db_handle->insertQuery("update billing_details set payment_status = '1' where id = '$billing_id'");
 
     $email_to = $customer_email;
@@ -170,17 +188,11 @@ if (!empty($_GET['session_id'])) {
                 location.href = "shop.php";
             </script>
             <?php
-        } else { ?>
-            <h1 class="error">Your Payment been failed!</h1>
-            <p class="error"><?php echo $statusMsg; ?></p>
-            <p>Admin Mail Send Failed.</p>
-        <?php }
-    } else { ?>
-        <h1 class="error">Your Payment been failed!</h1>
-        <p class="error"><?php echo $statusMsg; ?></p>
-        <p>Customer Mail Send Failed.</p>
+        }?>
 
-    <?php }
+        <?php
+    } ?>
+    <?php
 } else { ?>
     <h1 class="error">Your Payment been failed!</h1>
     <p class="error"><?php echo $statusMsg; ?></p>

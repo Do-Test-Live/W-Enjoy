@@ -64,20 +64,6 @@ if (isset($_POST["placeOrder"])) {
                               VALUES ('$customer_id','$f_name','$l_name','$email','$phone'
                               ,'$address','$city','$zip_code','$payment','$shipping','$discount','$total_purchase','$delivery_charge','$purchase_points','$updated_at','$note')");
 
-
-    if($customer_id != 0){
-        $check_avail = $db_handle->runQuery("select * from point where customer_id = '$customer_id'");
-        $no_check_avail = $db_handle->numRows("select * from point where customer_id = '$customer_id'");
-        if($no_check_avail == 1){
-            $points = $check_avail[0]['points'];
-            $new_point = ($total_purchase * 0.1) + $points - $discount;
-            $update_point = $db_handle->insertQuery("UPDATE `point` SET `points`='$new_point',`date`='$updated_at' WHERE customer_id = '$customer_id'");
-        } else{
-            $new_point = ($total_purchase * 0.1);
-            $insert_point = $db_handle->insertQuery("INSERT INTO `point`(`customer_id`, `points`, `date`) VALUES ('$customer_id','$new_point','$updated_at')");
-        }
-
-    }
     $billing_id = $db_handle->runQuery("SELECT * FROM billing_details order by id desc limit 1");
 
     $id = $billing_id[0]["id"];
