@@ -21,8 +21,6 @@ if (isset($_POST['updateCategory'])) {
                 document.cookie = 'alert = 3;';
                 window.location.href='Category';
                 </script>";
-
-
 }
 
 
@@ -276,10 +274,10 @@ if (isset($_POST['delivery'])) {
             }
         }
         $email_to = $email;
-        $subject = 'Royal Cheese';
+        $subject = 'Enjoy Shop';
 
 
-        $headers = "From: Royal Cheese <" . $db_handle->from_email() . ">\r\n";
+        $headers = "From: Enjoy Shop <" . $db_handle->from_email() . ">\r\n";
         $headers .= "Content-Type: text/html; charset=utf-8\r\n";
 
         $messege = "

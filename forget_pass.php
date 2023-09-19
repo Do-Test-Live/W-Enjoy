@@ -86,9 +86,9 @@ window.location.href = 'forget_pass.php';
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Royal Cheese">
-    <meta name="keywords" content="Royal Cheese">
-    <meta name="author" content="Royal Cheese">
+    <meta name="description" content="Enjoy Shop">
+    <meta name="keywords" content="Enjoy Shop">
+    <meta name="author" content="Enjoy Shop">
     <link rel="icon" href="assets/images/favicon/f7.png" type="image/x-icon">
     <title>Forget Password - Enjoy</title>
 

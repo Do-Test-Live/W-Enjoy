@@ -147,7 +147,7 @@ if (!empty($_GET['session_id'])) {
     $subject = 'Enjoy';
 
 
-    $headers = "From: Enjoy Sex Shop <" . $db_handle->from_email() . ">\r\n";
+    $headers = "From: Enjoy Shop <" . $db_handle->from_email() . ">\r\n";
     $headers .= "Content-Type: text/html; charset=utf-8\r\n";
 
     $messege = "
@@ -167,7 +167,7 @@ if (!empty($_GET['session_id'])) {
         $subject = 'Enjoy';
 
 
-        $headers = "From: Enjoy Sex Shop <" . $db_handle->from_email() . ">\r\n";
+        $headers = "From: Enjoy Shop <" . $db_handle->from_email() . ">\r\n";
         $headers .= "Content-Type: text/html; charset=utf-8\r\n";
 
         $messege = "
