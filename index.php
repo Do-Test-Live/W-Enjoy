@@ -70,7 +70,16 @@ include('cart_backend.php');
     <span></span>
 </div>
 <!-- Loader End -->
-
+<div class="popup-overlay">
+    <div class="popup-container">
+        <div class="popup-card">
+            <h2>限時領取</h2>
+            <p>$30 現金卷無條件使用
+                Whatsapp <a href="https://wa.me/61908226" target="_blank" style="color: #ed1e79; font-weight: bold">61908226</a> 領取</p>
+            <button id="close-popup">Close</button>
+        </div>
+    </div>
+</div>
 <!-- Header Start -->
 <?php include('include/header.php'); ?>
 <!-- Header End -->
@@ -291,6 +300,32 @@ include('cart_backend.php');
             openModal();
         }
     });
+
+
+    const popupOverlay = document.querySelector(".popup-overlay");
+    const popupContainer = document.querySelector(".popup-container");
+    const closePopupButton = document.getElementById("close-popup");
+
+    function openPopup() {
+        popupOverlay.style.display = "flex";
+        setTimeout(() => {
+            popupContainer.style.opacity = "1";
+            popupContainer.style.transform = "scale(1)";
+        }, 100);
+    }
+
+    function closePopup() {
+        popupContainer.style.opacity = "0";
+        popupContainer.style.transform = "scale(0.8)";
+        setTimeout(() => {
+            popupOverlay.style.display = "none";
+        }, 300);
+    }
+
+    // Automatically open the popup when the page loads
+    window.addEventListener("load", openPopup);
+
+    closePopupButton.addEventListener("click", closePopup);
 </script>
 
 </body>
