@@ -264,3 +264,18 @@ if (isset($_POST['add_sub_sub_cat'])) {
                 </script>";
     }
 }
+
+
+if(isset($_POST['insertPoint'])){
+    $customer = $db_handle->checkValue($_POST['customer']);
+    $point = $db_handle->checkValue($_POST['point']);
+    $flag = '1';
+    $inserted_at = date("Y-m-d H:i:s");
+    $insert = $db_handle->insertQuery("INSERT INTO `point`(`customer_id`, `points`, `flag`, `date`) VALUES ('$customer','$point','$flag','$inserted_at')");
+    if($insert){
+        echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='Points';
+                </script>";
+    }
+}

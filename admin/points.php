@@ -54,27 +54,43 @@ if (!isset($_SESSION['userid'])) {
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Update Product</h4>
+                                <h4 class="card-title">Update Point</h4>
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
                                     <form method="post" action="Update" enctype="multipart/form-data">
 
-                                        <?php $data = $db_handle->runQuery("SELECT * FROM point where point_id={$_GET['pointid']}"); ?>
+                                            <?php $data = $db_handle->runQuery("SELECT * FROM point where point_id={$_GET['pointid']}"); ?>
 
-                                        <input type="hidden" value="<?php echo $data[0]["point_id"]; ?>" name="id" required>
+                                            <input type="hidden" value="<?php echo $data[0]["point_id"]; ?>" name="id" required>
+
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Point</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="point"
+                                                           value="<?php echo $data[0]["points"]; ?>" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="col-sm-6 mx-auto">
+                                                    <button type="submit" class="btn btn-primary w-25"
+                                                            name="updatePoint">Submit
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    <form method="post" action="Insert" enctype="multipart/form-data">
 
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label">Point</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="point"
-                                                       value="<?php echo $data[0]["points"]; ?>" required>
+                                                <input type="text" class="form-control" name="point" required>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <div class="col-sm-6 mx-auto">
                                                 <button type="submit" class="btn btn-primary w-25"
-                                                        name="updatePoint">Submit
+                                                        name="insertPoint">Submit
                                                 </button>
                                             </div>
                                         </div>
@@ -83,7 +99,41 @@ if (!isset($_SESSION['userid'])) {
                             </div>
                         </div>
                     </div>
-                <?php } else { ?>
+                <?php }
+                elseif (isset($_GET['customerID'])){
+                    ?>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Insert Point</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form method="post" action="Insert" enctype="multipart/form-data">
+                                        <input type="hidden" value="<?php echo $_GET['customerID'];?>" name="customer">
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label">Point</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="point" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <div class="col-sm-6 mx-auto">
+                                                <button type="submit" class="btn btn-primary w-25"
+                                                        name="insertPoint">Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+
+
+                else { ?>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
@@ -99,13 +149,14 @@ if (!isset($_SESSION['userid'])) {
                                             <th>Customer Email</th>
                                             <th>Customer Contact Number</th>
                                             <th>Remaining Points</th>
+                                            <th>Point Type</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <?php
-                                        $points = $db_handle->runQuery("SELECT * FROM `point`,customer WHERE point.customer_id = customer.id");
-                                        $row_count = $db_handle->numRows("SELECT * FROM `point`,customer WHERE point.customer_id = customer.id");
+                                        $points = $db_handle->runQuery("SELECT * FROM customer");
+                                        $row_count = $db_handle->numRows("SELECT * FROM customer");
 
                                         for ($i = 0; $i < $row_count; $i++) {
                                             ?>
@@ -114,10 +165,38 @@ if (!isset($_SESSION['userid'])) {
                                                 <td><?php echo $points[$i]["customer_name"]; ?></td>
                                                 <td><?php echo $points[$i]["email"]; ?></td>
                                                 <td><?php echo $points[$i]["number"]; ?></td>
-                                                <td><?php echo $points[$i]["points"]; ?></td>
+                                                <td><?php
+                                                    $fetch_points = $db_handle->runQuery("select * from point where customer_id = {$points[$i]['id']}");
+                                                    $fetch_points_no = $db_handle->numRows("select * from point where customer_id = {$points[$i]['id']}");
+                                                    if ($fetch_points_no > 0) {
+                                                        echo $fetch_points[0]["points"];
+                                                    } else {
+                                                        echo '00';
+                                                    }
+                                                    ?></td>
+                                                <td><?php
+                                                    if ($fetch_points_no > 0){
+                                                        if($fetch_points[0]['flag'] == '1'){
+                                                            echo "Admin";
+                                                        }else{
+                                                            echo "Purchase";
+                                                        }
+                                                    } else{
+                                                        echo "No Points Yet!";
+                                                    }
+                                                    ?></td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="Points?pointid=<?php echo $points[$i]["point_id"]; ?>"
+                                                        <a href="<?php
+                                                        if ($fetch_points_no > 0) {
+                                                            ?>
+                                                            Points?pointid=<?php echo $fetch_points[0]["point_id"]; ?>
+                                                        <?php
+                                                        } else{
+                                                            ?>
+                                                            Points?customerID=<?php echo $points[$i]['id'];?>
+                                                        <?php
+                                                        } ?>"
                                                            class="btn btn-primary shadow btn-xs sharp mr-1"><i
                                                                 class="fa fa-pencil"></i></a>
                                                     </div>
